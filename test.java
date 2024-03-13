@@ -1,5 +1,7 @@
 public class test {
-    public test() {
+    public int test() {
+        int a = 3;
+        return a;
     }
 
     @Override
