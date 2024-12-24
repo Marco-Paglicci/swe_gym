@@ -6,4 +6,7 @@ public class Interface_PT {
     private Employee personale;
 
     //TODO:Confusione nell'UML
+    public void getPT(){
+        //Logica per estrarre dal DB
+    }
 }
