@@ -25,4 +25,8 @@ public class Client {
     public String getCognome() {
         return cognome;
     }
+
+    public Subscrition getSubscrition(){
+        return abbonamento;
+    }
 }
