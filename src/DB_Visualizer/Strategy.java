@@ -1,8 +1,8 @@
-package DB_Visualizer;
+package src.DB_Visualizer;
 
 import java.sql.ResultSet;
 
 // Strategy Interface
 public interface Strategy {
-    ResultSet execute(String query);
+    ResultSet execute(int ID);
 }
