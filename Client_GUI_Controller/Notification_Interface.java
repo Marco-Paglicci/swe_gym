@@ -1,18 +1,32 @@
 package Client_GUI_Controller;
 import java.sql.ResultSet;
-
+import models.Message;
+import models.Client;
+import src.DB_Visualizer.DB_Visualizer;
 public class Notification_Interface {
+    private DB_Visualizer DB;
+    private Client utente;
+    Notification_Interface(Client utente){
+        this.utente = utente;
+    }
     public ResultSet getMessaggi(){
         //Restituisce i messaggi in formato ResultSet dal DB
         System.out.println("Recuperando informazioni dal database...");
-        return null;
+        DB.generateExecute(5, utente.getID());
+        ResultSet RS = DB.getResult();
+        return RS;
     }
-    public void message_reply(int mittente){
+    public void message_reply(int destinatario, String message){
         //Chiamata a send messagge della classe message interface
-        //TODO:Non mi smebra corretta come idea, non funzionerebbe
+        //TODO:Secondo me possiamo mandare il messaggio direttamente da qui senza utilizzare l'interfaccia
+        Message_Interface MI = new Message_Interface();
+        Message M = new Message(utente.getID(),destinatario , message);
+        MI.sendMessage(M); //TODO:In realtà credo che serva perché qua dovremo caricare il messaggio sul DB
     }
     public void gestione_appuntamento(){
         //Chiamata a interfaccia appuntamento
+        Appointment_Interface AI = new Appointment_Interface(utente);
+        AI.visualizza();
     }
     public void visualizza(){
         //Classica logica per visualizzare

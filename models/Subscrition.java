@@ -16,9 +16,13 @@ public class Subscrition {
         //Logica per visualizzare il tipo di abbonamento
         System.out.println("Abbonamento: "+sub_type+" Scadenza: "+expiration);
     }
-    public void renewal_subsciption(){
+    public void renewal_subsciption(int duration){
         //Logica per allungare la data di scadenza
-        expiration += 6; //abbonamento da 3 mesi ... //TODO: si può rinnovare da 6 a 12 mesi
+        if(duration == 6 || duration==12) {
+            expiration += duration; //abbonamento da 3 mesi ...
+
+        }else
+            System.out.println("Data specificata non uniforme, seleziona 6 o 12 mesi di rinnovo");
 
     }
 

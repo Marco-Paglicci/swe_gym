@@ -1,15 +1,15 @@
 package models;
 
 public class Employee {
-    private String ID; //TODO:magari farlo int ??
+    private int ID;
     private String nome;
     private String cognome;
 
-    public String getID() {
+    public int getID() {
         return ID;
     }
 
-    public void setID(String ID) {
+    public void setID(int ID) {
         this.ID = ID;
     }
 
