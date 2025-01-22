@@ -12,5 +12,6 @@ public class Modify_Interface {
         // Modifica i dati del Personal Trainer sul DB
 
         System.out.println("Informazioni aggiornate: " + PT.getNome() + " " + PT.getCognome());
+        //TODO:Metodo per modificare i dati dal DB
     }
 }

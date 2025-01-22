@@ -7,7 +7,7 @@ public class Client_Interface {
 
     public Object[] getClienti() {
         // Logica per recuperare i clienti
-        System.out.println("Recuperando clienti...");
+        System.out.println("Recuperando clienti..."); //TODO:Gli prende dal DB??
         //-> Inserisce in clients
         return new Object[0];
     }
@@ -17,16 +17,18 @@ public class Client_Interface {
         System.out.println("Visualizzando clienti per il PT: " + PT.getNome());
     }
 
-    public void selectClient(Object client) {
+    public void selectClient(Client cliente) {
         // Logica per selezionare un cliente
-        System.out.println("Cliente selezionato: " + client);
-
+        System.out.println("Cliente selezionato: ");
+        Client_PT_Interface CPTI = new Client_PT_Interface(cliente, PT);
+        CPTI.visualizza();
         //Una volta selezionato si può andare nella pagina appuntamenti
     }
 
-    public void visualizzaRichieste(Personal_Trainer pt) {
+    public void visualizzaRichieste() {
         // Logica per visualizzare le richieste dei clienti
-        System.out.println("Visualizzando richieste per il PT: " + pt.getNome());
-        //Prese dal DB
+        System.out.println("Visualizzando richieste per il PT: " + PT.getNome());
+        Book_Interface BI = new Book_Interface(PT);
+        BI.visualizza();
     }
 }

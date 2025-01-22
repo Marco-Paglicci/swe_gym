@@ -4,7 +4,10 @@ import models.Client;
 public class Client_PT_Interface {
     private Personal_Trainer PT;
     private Client client;
-
+    Client_PT_Interface(Client cliente, Personal_Trainer PT){
+        this.PT = PT;
+        this.client = cliente;
+    }
     public Object getCliente() {
         //TODO:riguardare
         return client;

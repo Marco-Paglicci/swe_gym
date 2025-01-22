@@ -1,19 +1,25 @@
 package PT_GUI_Controller;
 import models.Personal_Trainer;
 import java.sql.ResultSet;
+import src.DB_Visualizer.DB_Visualizer;
 
 public class Information_Interface {
     private Personal_Trainer PT;
+    private DB_Visualizer DB;
 
+    Information_Interface(Personal_Trainer PT){
+        this.PT = PT;
+    }
     public void visualizza() {
         // Logica per visualizzare le informazioni del PT
         System.out.println("Informazioni del PT: " + PT.getNome() + " " + PT.getCognome());
     }
 
     public ResultSet getInformazioni() {
-        // Qui si dovrebbe implementare la logica per restituire un ResultSet dal DB
         System.out.println("Recuperando informazioni dal database...");
+        //DB.generateExecute();
         return null;
+        //TODO:nel DB dobbiamo dividere l'accesso alle informazione dei clienti da quello dei pt e impiegati
     }
 
     public void modificaInformazioni() {

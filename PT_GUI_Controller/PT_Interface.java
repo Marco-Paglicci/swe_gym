@@ -6,6 +6,9 @@ public class PT_Interface {
 
     public void visualizza_informazioni(){
         // Logica per visualizzare le informazioni -> Interfaccia informazioni
+        Information_Interface II = new Information_Interface(PT);
+        II.visualizza();
+
     }
     public void tabella_clienti(){
         // Logica per mostrare la tabella dei clienti -> Interfaccia clienti
