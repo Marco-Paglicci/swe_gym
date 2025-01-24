@@ -12,14 +12,14 @@ public class Client {
 
     private Subscrition abbonamento;
 
-    public Client(int ID, String nome, String cognome,Date scadenza, Subscrition abbonamento) { //Ctor
+    public Client(int ID, String nome, String cognome, Subscrition abbonamento) { //Ctor
         this.ID = ID;
         this.nome = nome;
         this.cognome = cognome;
         this.abbonamento = abbonamento;
     }
 
-    public Client(int ID, String nome, String cognome,Date scadenza) { //Ctor
+    public Client(int ID, String nome, String cognome) { //Ctor
         this.ID = ID;
         this.nome = nome;
         this.cognome = cognome;

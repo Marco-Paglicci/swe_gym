@@ -1,6 +1,8 @@
 package src.Query_Executer.DAOStructure;
 
 import models.Client;
+import models.Subscrition;
+import src.Query_Executer.Execute_Query;
 import src.Query_Factory.Query;
 import src.Query_Executer.Database;
 
@@ -12,11 +14,11 @@ import java.util.List;
 
 public class UtenteDAO {
 
-    private final Database database;
+    private final Execute_Query executeQuery;
 
-    // Costruttore per ricevere il database (o Execute_Query se preferisci)
-    public UtenteDAO(Database database) {
-        this.database = database;
+    // Costruttore che riceve l'oggetto Execute_Query
+    public UtenteDAO(Execute_Query executeQuery) {
+        this.executeQuery = executeQuery;
     }
 
     /**
@@ -30,20 +32,23 @@ public class UtenteDAO {
         ResultSet rs = null;
 
 
-        try (Connection connection = database.getConnection();
-             PreparedStatement statement = connection.prepareStatement(query.getQuery())) {
-
+        try {
+            // Esegui la query usando Execute_Query
+            rs = executeQuery.Execute(1, query).getResultSet();
             // Esegui la query
-            rs = statement.executeQuery();
+
 
             // Trasforma il ResultSet in una lista di oggetti Utente
             while (rs.next()) {
+                Subscrition sb = new Subscrition(
+                        rs.getBoolean("premium"),
+                        rs.getDate("scadenza")
+                );
                 Client utente = new Client(
                         rs.getInt("id"),
                         rs.getString("nome"),
                         rs.getString("cognome"),
-                        rs.getDate("scadenza abbonamento"),
-                        rs.getObject('')
+                        sb
                 );
                 utenti.add(utente);
             }
