@@ -13,7 +13,6 @@ public class Informazioni_Strategy implements Strategy {
     Query Qy;
     Execute_Query EQ;
     ResultSet RS;
-
     @Override
     public ResultSet execute(int ID) {
         System.out.println("Executing Informazioni query...");
@@ -30,3 +29,4 @@ public class Informazioni_Strategy implements Strategy {
         return RS;
     }
 }
+

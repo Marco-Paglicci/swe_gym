@@ -11,6 +11,7 @@ public class Information_Interface {
         //Restituisce informazioni in formato ResultSet dal DB
         DB.generateExecute(1, utente.getID());
         RS = DB.getResult();
+
         return null;
     }
     public void modifica_informazioni(){

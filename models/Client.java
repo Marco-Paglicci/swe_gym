@@ -1,17 +1,28 @@
 package models;
 import models.Subscrition;
+
+import java.sql.Date;
+import java.sql.Time;
+
 public class Client {
     private int ID;
     private String nome;
     private String cognome;
 
+
     private Subscrition abbonamento;
 
-    public Client(int ID, String nome, String cognome, Subscrition abbonamento) { //Ctor
+    public Client(int ID, String nome, String cognome,Date scadenza, Subscrition abbonamento) { //Ctor
         this.ID = ID;
         this.nome = nome;
         this.cognome = cognome;
         this.abbonamento = abbonamento;
+    }
+
+    public Client(int ID, String nome, String cognome,Date scadenza) { //Ctor
+        this.ID = ID;
+        this.nome = nome;
+        this.cognome = cognome;
     }
 
     public int getID(){
@@ -28,5 +39,9 @@ public class Client {
 
     public Subscrition getSubscrition(){
         return abbonamento;
+    }
+
+    public void setAbbonamento(Subscrition abbonamento) {
+        this.abbonamento = abbonamento;
     }
 }

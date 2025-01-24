@@ -6,7 +6,7 @@ import java.sql.Connection;
 
 public abstract  class Database {
     // Metodo per ottenere una connessione al database
-    protected abstract Connection getConnection();
+     public abstract Connection getConnection();
 
     // Metodo per eseguire query di tipo SELECT
     public ResultSet executeQuery(String query) {
@@ -15,7 +15,7 @@ public abstract  class Database {
             return stmt.executeQuery(query);
         } catch (Exception e) {
             e.printStackTrace();
-            return null;
+            throw new RuntimeException("Errore durante l'esecuzione della query", e);
         }
     }
 
