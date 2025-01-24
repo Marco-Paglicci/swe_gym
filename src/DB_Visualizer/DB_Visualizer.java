@@ -7,7 +7,8 @@ import java.sql.ResultSet;
 public class DB_Visualizer {
     private String q_string;
     private Query query;
-    private ResultSet result;
+    private Object result;
+
     private Strategy strategy;
 
     public void setStrategy(Strategy strategy) {
@@ -40,7 +41,7 @@ public class DB_Visualizer {
         }
         //todo add get clienti , get appunbatmetni , get lista clienti totale
         // todo add string type
-
+        //todo gestire se si tratta di una lista o di un singolo oggetto
         result = strategy.execute(type,ID);
     }
 

@@ -5,6 +5,12 @@ public class Employee {
     private String nome;
     private String cognome;
 
+    public Employee(int ID, String nome, String cognome) {
+        this.ID = ID;
+        this.nome = nome;
+        this.cognome = cognome;
+    }
+
     public int getID() {
         return ID;
     }

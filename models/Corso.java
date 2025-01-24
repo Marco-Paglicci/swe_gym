@@ -1,12 +1,14 @@
 package models;
 
+import java.sql.Time;
+
 public class Corso {
     private int id;
     private String nome;
-    private int durata;
+    private Time durata;
     private int iscritti;
 
-    public Corso(int id, String nome, int durata, int iscritti){
+    public Corso(int id, String nome, Time durata, int iscritti){
         this.id = id;
         this.nome = nome;
         this.durata = durata;
@@ -29,11 +31,11 @@ public class Corso {
         this.nome = nome;
     }
 
-    public int getDurata() {
+    public Time getDurata() {
         return durata;
     }
 
-    public void setDurata(int durata) {
+    public void setDurata(Time durata) {
         this.durata = durata;
     }
 

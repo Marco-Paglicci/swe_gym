@@ -1,23 +1,22 @@
 package src.Query_Executer.DAOStructure;
 
-import models.Client;
-import models.Subscrition;
+
+import models.Employee;
 import src.Query_Executer.Execute_Query;
 import src.Query_Factory.Query;
-import src.Query_Executer.Database;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
+
+
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UtenteDAO {
+public class EmployeeDAO {
 
     private final Execute_Query executeQuery;
 
     // Costruttore che riceve l'oggetto Execute_Query
-    public UtenteDAO(Execute_Query executeQuery) {
+    public EmployeeDAO(Execute_Query executeQuery) {
         this.executeQuery = executeQuery;
     }
 
@@ -27,8 +26,8 @@ public class UtenteDAO {
      * @param query Oggetto Query con la stringa SQL.
      * @return Lista di oggetti Utente.
      */
-    public List<Client> getAllUtenti(Query query) {
-        List<Client> utenti = new ArrayList<>();
+    public List<Employee> getAllEmployee(Query query) {
+        List<Employee> Employee_list = new ArrayList<>();
         ResultSet rs = null;
 
 
@@ -40,21 +39,18 @@ public class UtenteDAO {
 
             // Trasforma il ResultSet in una lista di oggetti Utente
             while (rs.next()) {
-                Subscrition sb = new Subscrition(
-                        rs.getBoolean("premium"),
-                        rs.getDate("scadenza")
-                );
-                Client utente = new Client(
-                        rs.getInt("idUtente"),
+
+                Employee E = new Employee(
+                        rs.getInt("idpersonale"),
                         rs.getString("nome"),
-                        rs.getString("cognome"),
-                        sb
+                        rs.getString("cognome")
+
                 );
-                utenti.add(utente);
+                Employee_list.add(E);
             }
 
         } catch (Exception e) {
-            System.err.println("Errore durante il recupero degli utenti:");
+            System.err.println("Errore durante il recupero degli Personal Trainer:");
             e.printStackTrace();
         } finally {
             // Chiudi il ResultSet se aperto
@@ -68,7 +64,7 @@ public class UtenteDAO {
             }
         }
 
-        return utenti;
+        return Employee_list;
     }
 
     /**
@@ -77,9 +73,9 @@ public class UtenteDAO {
      * @param query Oggetto Query con la stringa SQL.
      * @return Oggetto Utente, o null se non trovato.
      */
-    public Client getUtenteById(Query query) {
+    public Employee getEmployeeById(Query query) {
         ResultSet rs = null;
-        Client utente = null;
+        Employee E = null;
 
         try {
             // Esegui la query usando Execute_Query
@@ -89,18 +85,14 @@ public class UtenteDAO {
 
             // Trasforma il ResultSet in una lista di oggetti Utente
             while (rs.next()) {
-                Subscrition sb = new Subscrition(
-                        rs.getBoolean("premium"),
-                        rs.getDate("scadenza")
-                );
-                    utente  = new Client(
-                        rs.getInt("idUtente"),
+
+                E = new Employee(
+                        rs.getInt("idpersonale"),
                         rs.getString("nome"),
-                        rs.getString("cognome"),
-                        sb
+                        rs.getString("cognome")
                 );
             }
-            return utente;
+            return E;
         } catch (Exception e) {
             System.err.println("Errore durante il recupero degli utenti:");
             e.printStackTrace();
