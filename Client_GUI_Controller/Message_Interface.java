@@ -10,5 +10,6 @@ public class Message_Interface {
 
     public void visualizza(){
         //Logica classica per la visualizzazione
+        System.out.println("Scrivi ed invia un messaggio");
     }
 }

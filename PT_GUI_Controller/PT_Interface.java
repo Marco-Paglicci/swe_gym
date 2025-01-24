@@ -5,11 +5,12 @@ public class PT_Interface {
     private Personal_Trainer PT;
     Information_Interface II;
     Client_Interface CI;
+    Review_Interface RI;
     public PT_Interface(Personal_Trainer PT){
         this.PT = PT;
         this.II = new Information_Interface(PT);
         this.CI = new Client_Interface(PT);
-
+        this.RI = new Review_Interface(PT);
 
     }
 
@@ -23,6 +24,7 @@ public class PT_Interface {
     }
     public void recensioni(Object PT){
         // Logica per mostrare le recensioni del Personal Trainer -> Interfaccia recensioni
+        RI.visualizza();
     }
 
     public void visualizza(){

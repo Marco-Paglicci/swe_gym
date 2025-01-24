@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Interface_PT {
-    private Personal_Trainer[] PT_list;
+    private List<Personal_Trainer> PT_list;
     private Employee personale;
     private DB_Visualizer DB;
     Interface_PT(Employee personale){
@@ -34,22 +34,10 @@ public class Interface_PT {
 
     }
 
-    public Personal_Trainer[] getPT(){
+    public List<Personal_Trainer> getPT(){
         System.out.println("Recupero i persnal trainer disponibili dal DB...");
-        DB.generateExecute(3,0);
-        ResultSet RS = DB.getResult();
-
-        List<Personal_Trainer> PTs = new ArrayList<>();
-        try{
-            while(RS.next()){
-                Personal_Trainer PT = new Personal_Trainer(
-                        RS.getInt("id"),
-                        RS.getString("nome"),
-                        RS.getString("cognome")
-                );
-                PTs.add(PT);
-            }
-        }catch(Exception e){e.printStackTrace();}
-        return PTs.toArray(new Personal_Trainer[0]);
+        DB.generateExecute("I",3,0);
+        List<Personal_Trainer> PTlist = DB.getpersonaltrainerlist();
+        return PTlist;
     }
 }

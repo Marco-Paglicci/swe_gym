@@ -11,22 +11,15 @@ public class Information_Interface {
     }
     public void visualizza(){
         System.out.println("Informazioni dell'utente:");
-        getInformazioni();
+        utente = getInformazioni();
+        System.out.println(utente.toString());
     }
-    public void getInformazioni(){
+    public Client getInformazioni(){
         //Restituisce informazioni in formato ResultSet dal DB
         System.out.println("Recuperando informazioni dal database...");
-        DB.generateExecute(1, utente.getID());
-        RS = DB.getResult();
-
-        try{
-            while(RS.next()){
-                int ID = RS.getInt("U_ID");
-                String nome = RS.getString("nome");
-                String cognome = RS.getString("cognome");
-                System.out.println("ID: "+ID+", Nome: "+nome+", Cognome: "+cognome);
-            }
-        }catch(Exception e){e.printStackTrace();}
+        DB.generateExecute("C",1, utente.getID());
+        Client cliente = DB.getcliente();
+        return cliente;
     }
     public void modifica_informazioni(){
         //Chiamata a interfaccia modifica info
