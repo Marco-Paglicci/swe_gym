@@ -14,7 +14,7 @@ public class DB_Visualizer {
         this.strategy = strategy;
     }
 
-    public void generateExecute( int request, int ID) {
+    public void generateExecute(String type, int request, int ID) {
 
         switch (request) {
             case 1:
@@ -41,7 +41,7 @@ public class DB_Visualizer {
         //todo add get clienti , get appunbatmetni , get lista clienti totale
         // todo add string type
 
-        result = strategy.execute(ID);
+        result = strategy.execute(type,ID);
     }
 
     public String getQ_string() {

@@ -77,28 +77,32 @@ public class UtenteDAO {
      * @param query Oggetto Query con la stringa SQL.
      * @return Oggetto Utente, o null se non trovato.
      */
-    public Utente getUtenteById(Query query) {
+    public Client getUtenteById(Query query) {
         ResultSet rs = null;
+        Client utente = null;
 
-        // Gestione delle risorse
-        try (Connection connection = database.getConnection();
-             PreparedStatement statement = connection.prepareStatement(query.getQuery())) {
-
+        try {
+            // Esegui la query usando Execute_Query
+            rs = executeQuery.Execute(1, query).getResultSet();
             // Esegui la query
-            rs = statement.executeQuery();
 
-            // Se il risultato contiene un record, crealo come Utente
-            if (rs.next()) {
-                return new Utente(
+
+            // Trasforma il ResultSet in una lista di oggetti Utente
+            while (rs.next()) {
+                Subscrition sb = new Subscrition(
+                        rs.getBoolean("premium"),
+                        rs.getDate("scadenza")
+                );
+                    utente  = new Client(
                         rs.getInt("id"),
                         rs.getString("nome"),
                         rs.getString("cognome"),
-                        rs.getString("email")
+                        sb
                 );
             }
-
+            return utente;
         } catch (Exception e) {
-            System.err.println("Errore durante il recupero dell'utente per ID:");
+            System.err.println("Errore durante il recupero degli utenti:");
             e.printStackTrace();
         } finally {
             // Chiudi il ResultSet se aperto

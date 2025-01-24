@@ -15,7 +15,7 @@ public class Corsi_Strategy implements Strategy {
     ResultSet RS;
 
     @Override
-    public ResultSet execute(int ID) {
+    public ResultSet execute(String type,int ID) {
         System.out.println("Executing Corsi query...");
         query = "SELECT * FROM Corsi WHERE Corsi.iscritti = " + ID ;
         Qy = QF.createQuery(query);

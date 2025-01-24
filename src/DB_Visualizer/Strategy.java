@@ -4,5 +4,5 @@ import java.sql.ResultSet;
 
 // Strategy Interface
 public interface Strategy {
-    ResultSet execute(int ID);
+    Object execute(String type, int ID);
 }

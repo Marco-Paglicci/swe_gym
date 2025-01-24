@@ -15,7 +15,7 @@ public class Appuntamento_Strategy implements Strategy {
     ResultSet RS;
 
     @Override
-    public ResultSet execute(int ID) {
+    public ResultSet execute(String type,int ID) {
         System.out.println("Executing Appuntamento query...");
         query = "SELECT * FROM Appuntamento WHERE Appuntamento.PT = " + ID ;
         Qy = QF.createQuery(query);

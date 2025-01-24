@@ -1,7 +1,7 @@
 package models;
 
 public class Personal_Trainer {
-    private String ID; //TODO:magari farlo int ??
+    private String ID;
     private String nome;
     private String cognome;
     public Personal_Trainer(String ID, String nome, String cognome){
