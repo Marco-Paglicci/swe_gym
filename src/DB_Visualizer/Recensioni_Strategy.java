@@ -1,11 +1,13 @@
 package src.DB_Visualizer;
 
 
+import models.Corso;
 import src.Query_Executer.Execute_Query;
 import src.Query_Factory.Query;
 import src.Query_Factory.QueryFactory;
 
 import java.sql.ResultSet;
+import java.util.List;
 
 public class Recensioni_Strategy implements Strategy {
 
@@ -14,22 +16,75 @@ public class Recensioni_Strategy implements Strategy {
     Query Qy;
     Execute_Query EQ;
     ResultSet RS;
+    List<String> result_list;
 
     @Override
-    public ResultSet execute(String type,int ID) {
+    public List<String> execute(String type, int ID) {
         System.out.println("Executing Recensioni query...");
-        query = "SELECT " +
-                "* FROM Recensioni " +
-                "WHERE Recensioni.personaltrainer = " + ID ;
-        Qy = QF.createQuery(query);
-        Object result = EQ.Execute(1,Qy);
-        if (result instanceof  ResultSet)
-        {
-            RS = (ResultSet) result;
-        }else{
-            System.out.println("Error : Get Query Give out boolean value ");
+
+        switch (type) {
+            case "C":
+                query = "SELECT recensione.recensione " +
+                        "FROM recensione " +
+                        "WHERE recensione.idUtente = " + ID;
+                Qy = QF.createQuery(query);
+                RS = EQ.executeGet(Qy);
+                try {
+                    while (RS.next()) {
+                        result_list.add(RS.getString("recensione"));
+                    }
+                } catch (Exception e) {
+                    System.err.println("Errore durante il recupero degli Personal Trainer:");
+                    e.printStackTrace();
+                }
+                if (result_list != null)
+                    return result_list;
+                else {
+                    System.out.println("Error :prelevato lista corsi nulla in strategy corsi ");
+                    break;
+                }
+            case "P":
+                query = "SELECT recensione.recensione " +
+                        "FROM recensione " +
+                        "WHERE recensione.idPersonaltrainer = " + ID;
+                Qy = QF.createQuery(query);
+                RS = EQ.executeGet(Qy);
+                try {
+                    while (RS.next()) {
+                        result_list.add(RS.getString("recensione"));
+                    }
+                } catch (Exception e) {
+                    System.err.println("Errore durante il recupero degli Personal Trainer:");
+                    e.printStackTrace();
+                }
+                if (result_list != null)
+                    return result_list;
+                else {
+                    System.out.println("Error :prelevato lista corsi nulla in strategy corsi ");
+                    break;
+                }
+            case "I":
+                query = "SELECT recensione.recensione " +
+                        "FROM recensione ";
+                Qy = QF.createQuery(query);
+                RS = EQ.executeGet(Qy);
+                try {
+                    while (RS.next()) {
+                        result_list.add(RS.getString("recensione"));
+                    }
+                } catch (Exception e) {
+                    System.err.println("Errore durante il recupero degli Personal Trainer:");
+                    e.printStackTrace();
+                }
+                if (result_list != null)
+                    return result_list;
+                else {
+                    System.out.println("Error :prelevato lista corsi nulla in strategy corsi ");
+                    break;
+                }
 
         }
-        return RS;
+
+        return null;
     }
 }

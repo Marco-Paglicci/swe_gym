@@ -1,51 +1,51 @@
 package src.DB_Visualizer;
 
+import models.Client;
 import models.Corso;
 import src.Query_Executer.DAOStructure.CorsiDAO;
+import src.Query_Executer.DAOStructure.UtenteDAO;
 import src.Query_Executer.Execute_Query;
 import src.Query_Factory.Query;
 import src.Query_Factory.QueryFactory;
 
-import java.sql.ResultSet;
 import java.util.List;
 
-public class Corsi_Strategy implements Strategy {
+public class Clienti_Strategy implements Strategy{
+
 
     String query;
     QueryFactory QF;
     Query Qy;
     Object result;
-    List<Corso> result_list;
+    List<Client> result_list;
     Execute_Query EQ;
 
-    CorsiDAO CDAO;
+    UtenteDAO UDAO;
 
     @Override
-    public List<Corso> execute(String type,int ID) {
-
-        System.out.println("Executing Corsi query...");
+    public List<Client> execute(String type, int ID) {
 
         switch(type)
         {
-            case "C":
-                query = "SELECT corsi.nome , corsi.orario_inizio , corsi.partecipanti " +
-                        "FROM partecipazione JOIN corsi ON partecipazione.idCorso = corsi.idcorsi " +
-                        "GROUP BY corsi.idcorsi " +
-                        "WHERE affiliazione.idUtente = " + ID ;
-
+            case "P":
+                query = "SELECT utenti.Nome,utenti.Cognome " +
+                        "FROM utenti  LEFT JOIN affiliazione ON  utenti.idUtenti = affiliazione.idUtente" +
+                        "WHERE affiliazione.idUtente = " + ID;
                 Qy = QF.createQuery(query);
-                result_list = CDAO.getAllCorsi(Qy);
-                if(result != null)
+                result_list = UDAO.getAllUtenti(Qy);
+                if(result_list != null)
                     return result_list;
                 else {
                     System.out.println("Error :prelevato lista corsi nulla in strategy corsi ");
                     break;
                 }
 
-            case "P", "I":
-                query = "SELECT * FROM corsi ";
+
+            case "I":
+                query = "SELECT *" +
+                        "FROM utenti ";
                 Qy = QF.createQuery(query);
-                result_list = CDAO.getAllCorsi(Qy);
+                result_list = UDAO.getAllUtenti(Qy);
                 if(result_list != null)
                     return result_list;
                 else {
@@ -53,8 +53,6 @@ public class Corsi_Strategy implements Strategy {
                     break;
                 }
         }
-
-
         return null;
     }
 }

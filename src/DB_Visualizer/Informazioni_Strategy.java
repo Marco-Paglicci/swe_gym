@@ -1,11 +1,14 @@
 package src.DB_Visualizer;// Concrete Strategies
 
+import src.Query_Executer.DAOStructure.EmployeeDAO;
+import src.Query_Executer.DAOStructure.Personal_TrainerDAO;
 import src.Query_Executer.DAOStructure.UtenteDAO;
 import src.Query_Executer.Execute_Query;
 import src.Query_Factory.Query;
 import src.Query_Factory.QueryFactory;
 
 import java.sql.ResultSet;
+import java.util.List;
 
 public class Informazioni_Strategy implements Strategy {
 
@@ -14,44 +17,61 @@ public class Informazioni_Strategy implements Strategy {
     Query Qy;
 
     UtenteDAO UtenteDAO;
+    Personal_TrainerDAO PTDAO;
+
+    EmployeeDAO PDAO;
     ResultSet RS;
 
     Object result;
+    List<Object> result_list;
+
     @Override
-    public Object execute(String type,int ID) {
+    public List<Object> execute(String type, int ID) {
         System.out.println("Executing Informazioni query...");
-        switch(type)
-        {
+        switch (type) {
             case "C":
-                query = "SELECT * FROM utente WHERE utenti.idUtenti= " + ID ;
+                query = "SELECT * FROM utenti WHERE utenti.idUtenti= " + ID;
                 Qy = QF.createQuery(query);
                 result = UtenteDAO.getUtenteById(Qy);
-                if(result != null)
-                return result;
-                else
-                {
+                result_list.add(result);
+                if (result != null)
+                    return result_list;
+                else {
                     System.out.println("Erroe , prelevato utente nullo , id errato");
                     break;
                 }
 
 
             case "P":
-                query = "SELECT * FROM  WHERE Cliente.id = " + ID ;
+                query = "SELECT * FROM  personal_trainer WHERE personal_trainer.idPersonaltrainer = " + ID;
                 Qy = QF.createQuery(query);
-                result = EQ.Execute(1,Qy);
-                if (result instanceof  ResultSet)
-                {
-                    RS = (ResultSet) result;
-                }else{
+                result = PTDAO.getPersonal_TrainerById(Qy);
+                result_list.add(result);
+                if (result != null)
+                    return result_list;
+                else {
                     System.out.println("Error : Get Query Give out boolean value ");
-
+                    break;
                 }
-                return RS;
+
 
             case "I":
+                query = "SELECT * FROM personale  WHERE personale.idpersonale = " + ID;
+                Qy = QF.createQuery(query);
+                result = PDAO.getEmployeeById(Qy);
+                result_list.add(result);
+                if (result != null)
+                    return result_list;
+                else {
+                    System.out.println("Error : Get Query Give out boolean value ");
+                    break;
+                }
         }
 
 
+        return null;
     }
 }
+
+
 

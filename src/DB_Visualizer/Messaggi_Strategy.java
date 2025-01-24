@@ -1,10 +1,14 @@
 package src.DB_Visualizer;
 
+import models.Corso;
+import models.Message;
+import src.Query_Executer.DAOStructure.MessageDAO;
 import src.Query_Executer.Execute_Query;
 import src.Query_Factory.Query;
 import src.Query_Factory.QueryFactory;
 
 import java.sql.ResultSet;
+import java.util.List;
 
 public class Messaggi_Strategy implements Strategy {
 
@@ -12,24 +16,56 @@ public class Messaggi_Strategy implements Strategy {
     QueryFactory QF;
     Query Qy;
     Execute_Query EQ;
-    ResultSet RS;
+    MessageDAO MDAO;
+    List<Message> result_list;
+
     @Override
-    public ResultSet execute(String type,int ID) {
+    public List<Message> execute(String type,int ID) {
+
         System.out.println("Executing Messaggi query...");
-        query = "SELECT * " +
-                "FROM Messaggi " +
-                "WHERE Messaggi.mittente = " + ID +
-                "AND Messaggi.destinatario = "+ ID;
 
-        Qy = QF.createQuery(query);
-        Object result = EQ.Execute(1,Qy);
-        if (result instanceof  ResultSet)
+        switch(type)
         {
-            RS = (ResultSet) result;
-        }else{
-            System.out.println("Error : Get Query Give out boolean value ");
+            case "C":
+                query = "SELECT * " +
+                        "FROM messaggio u_pt" +
+                        "WHERE messaggio u_pt.mittente = " + ID;
+                Qy = QF.createQuery(query);
+                result_list = MDAO.getAllMessagebyId(Qy);
+                if(result_list != null)
+                    return result_list;
+                else {
+                    System.out.println("Error : message list nulla in get messaggi ");
+                    break;
+                }
 
+            case "P":
+                query = "SELECT * " +
+                        "FROM messaggio pt_u" +
+                        "WHERE messaggio pt_u.mittente = " + ID;
+                Qy = QF.createQuery(query);
+                result_list = MDAO.getAllMessagebyId(Qy);
+                if(result_list != null)
+                    return result_list;
+                else {
+                    System.out.println("Error : message list nulla in get messaggi ");
+                    break;
+                }
+
+            case "I":
+                query = "SELECT * " +
+                        "FROM messaggio p_u" +
+                        "WHERE messaggio p_u.mittente = " + ID;
+                Qy = QF.createQuery(query);
+                result_list = MDAO.getAllMessagebyId(Qy);
+                if(result_list != null)
+                    return result_list;
+                else {
+                    System.out.println("Error : message list nulla in get messaggi ");
+                    break;
+                }
         }
-        return RS;
+
+        return null;
     }
 }

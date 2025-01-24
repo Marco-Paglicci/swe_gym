@@ -1,8 +1,9 @@
 package src.DB_Visualizer;
 
 import java.sql.ResultSet;
+import java.util.List;
 
 // Strategy Interface
 public interface Strategy {
-    Object execute(String type, int ID);
+    List execute(String type, int ID);
 }
