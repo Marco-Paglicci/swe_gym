@@ -14,7 +14,7 @@ public class Messaggi_Strategy implements Strategy {
     Execute_Query EQ;
     ResultSet RS;
     @Override
-    public ResultSet execute(int ID) {
+    public ResultSet execute(String type,int ID) {
         System.out.println("Executing Messaggi query...");
         query = "SELECT * " +
                 "FROM Messaggi " +

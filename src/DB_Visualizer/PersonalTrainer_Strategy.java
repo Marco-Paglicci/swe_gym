@@ -14,7 +14,7 @@ public class PersonalTrainer_Strategy implements Strategy {
     ResultSet RS;
     Execute_Query EQ;
     @Override
-    public ResultSet execute(int ID) {
+    public ResultSet execute(String type,int ID) {
         System.out.println("Executing PersonalTrainer query...");
         query = "SELECT * FROM PersonalTrainers" ;
         Qy = QF.createQuery(query);

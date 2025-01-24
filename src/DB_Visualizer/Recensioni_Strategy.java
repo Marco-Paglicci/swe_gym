@@ -16,7 +16,7 @@ public class Recensioni_Strategy implements Strategy {
     ResultSet RS;
 
     @Override
-    public ResultSet execute(int ID) {
+    public ResultSet execute(String type,int ID) {
         System.out.println("Executing Recensioni query...");
         query = "SELECT " +
                 "* FROM Recensioni " +

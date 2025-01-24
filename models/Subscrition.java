@@ -1,13 +1,15 @@
 package models;
 
+import java.sql.Date;
+
 public class Subscrition {
-    private String sub_type;
-    private int expiration;
+    private boolean sub_type;
+    private Date expiration;
 
     //Ctor
 
 
-    public Subscrition(String sub_type, int expiration) {
+    public Subscrition(boolean sub_type, Date expiration) {
         this.sub_type = sub_type;
         this.expiration = expiration;
     }
@@ -16,13 +18,9 @@ public class Subscrition {
         //Logica per visualizzare il tipo di abbonamento
         System.out.println("Abbonamento: "+sub_type+" Scadenza: "+expiration);
     }
-    public void renewal_subsciption(int duration){
-        //Logica per allungare la data di scadenza
-        if(duration == 6 || duration==12) {
-            expiration += duration; //abbonamento da 3 mesi ...
-
-        }else
-            System.out.println("Data specificata non uniforme, seleziona 6 o 12 mesi di rinnovo");
+    public void renewal_subsciption(){
+        //Logica per allungare la data di scadenza   //todo fix with date type variables
+        expiration += 6; //abbonamento da 3 mesi ... //TODO: si può rinnovare da 6 a 12 mesi
 
     }
 

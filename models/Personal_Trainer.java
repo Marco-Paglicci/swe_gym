@@ -1,15 +1,15 @@
 package models;
 
 public class Personal_Trainer {
-    private int ID;
+    private String ID;
     private String nome;
     private String cognome;
-    public Personal_Trainer(int ID, String nome, String cognome){
+    public Personal_Trainer(String ID, String nome, String cognome){
         this.ID = ID;
         this.nome = nome;
         this.cognome = cognome;
     }
-    public int getID(){
+    public String getID(){
         return ID;
     }
     public String getNome() {
