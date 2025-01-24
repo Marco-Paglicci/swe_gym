@@ -9,12 +9,24 @@ public class Information_Interface {
     Information_Interface(Client utente){
         this.utente = utente;
     }
-    public ResultSet getInformazioni(){
+    public void visualizza(){
+        System.out.println("Informazioni dell'utente:");
+        getInformazioni();
+    }
+    public void getInformazioni(){
         //Restituisce informazioni in formato ResultSet dal DB
         System.out.println("Recuperando informazioni dal database...");
         DB.generateExecute(1, utente.getID());
         RS = DB.getResult();
-        return RS;
+
+        try{
+            while(RS.next()){
+                int ID = RS.getInt("U_ID");
+                String nome = RS.getString("nome");
+                String cognome = RS.getString("cognome");
+                System.out.println("ID: "+ID+", Nome: "+nome+", Cognome: "+cognome);
+            }
+        }catch(Exception e){e.printStackTrace();}
     }
     public void modifica_informazioni(){
         //Chiamata a interfaccia modifica info
