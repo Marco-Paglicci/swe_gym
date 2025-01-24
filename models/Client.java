@@ -7,11 +7,16 @@ public class Client {
 
     private Subscrition abbonamento;
 
-    public Client(int ID, String nome, String cognome, Subscrition abbonamento) { //Ctor
+    public Client(int ID, String nome, String cognome, Subscrition abbonamento) {
         this.ID = ID;
         this.nome = nome;
         this.cognome = cognome;
         this.abbonamento = abbonamento;
+    }
+
+    // Costruttore di default
+    public Client(int ID, String nome, String cognome) {
+        this(ID, nome, cognome, new Subscrition("Premium", 12));
     }
 
     public int getID(){
@@ -28,5 +33,10 @@ public class Client {
 
     public Subscrition getSubscrition(){
         return abbonamento;
+    }
+
+    @Override
+    public String toString(){
+        return "Cliente: "+ID+", Nome: " +nome+", Cognome: "+cognome;
     }
 }

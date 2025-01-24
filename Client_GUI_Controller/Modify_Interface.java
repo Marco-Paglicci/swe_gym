@@ -7,7 +7,6 @@ public class Modify_Interface {
         utente = user;
     }
     public void modificaInformazioni(String nome, String Cognome){
-        //TODO: solo nome e cognome?
         //Logica che accede al DB e modifica i dati dell'utente dato
     }
     public void visualizza(){

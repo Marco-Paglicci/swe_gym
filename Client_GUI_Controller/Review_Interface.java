@@ -14,8 +14,6 @@ public class Review_Interface {
     public boolean sendRecensione(){
         //Logica per mandare una recensione ad un PT tramite DB
         //TODO:Come aggiungo una recensione al personal trainer con quell'ID
-        //TODO:Il REV_ID dovra essere univoco come lo facciamo ?
-        DB.generateExecute(6, utente.getID());
         return true;
     }
     public void visualizza(){

@@ -3,7 +3,11 @@ import models.Employee;
 import models.Client;
 import models.Message;
 
+
 import java.sql.ResultSet;
+import java.util.ArrayList;
+
+import java.util.List;
 
 public class Interface_Client {
     private Employee personale;
@@ -13,17 +17,30 @@ public class Interface_Client {
         this.personale = personale;
     }
     public void visualizza(){
-        //Clienti_List = getClient(); TODO:La logica dovrà essere così
+        Clienti_List = getClient();
         for (Client cliente: Clienti_List){
-            System.out.println(cliente.getNome()+""+cliente.getCognome()+""+cliente.getID());
+            System.out.println(cliente.getNome()+" "+cliente.getCognome()+" "+cliente.getID());
         }
     }
-    public ResultSet getClient(){
-        //TODO:Prendere la lista di tutti i clienti disponibili
-        return null;
+    public Client[] getClient(){
+        ResultSet RS = getClientDB(); //TODO:inserire la funzione dal DB
+        List<Client> clienti = new ArrayList<>();
+        try {
+            while (RS != null && RS.next()) {
+                Client client = new Client(
+                        RS.getInt("id"),
+                        RS.getString("nome"),
+                        RS.getString("cognome")
+                        );
+                clienti.add(client);
+            }
+        }catch(Exception e){ e.printStackTrace();}
+        return clienti.toArray(new Client[0]);
     }
     public void aggiungi_cliente(String nome, String cognome, int type){
         //Logica per inserire un nuovo cliente nella lista -> Interfaccia new client
+
+        //Lazy initialization
         Interface_NewClient INC = new Interface_NewClient(nome, cognome, type);
         INC.aggiungi_cliente();
     }

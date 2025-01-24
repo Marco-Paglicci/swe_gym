@@ -7,6 +7,7 @@ public class Review_Interface {
     private Personal_Trainer PT;
     private DB_Visualizer DB;
 
+
     public void visualizza() {
         // Logica per visualizzare le recensioni
         System.out.println("Visualizzando recensioni per il PT: " + PT.getNome());

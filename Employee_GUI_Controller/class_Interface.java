@@ -1,11 +1,15 @@
 package Employee_GUI_Controller;
 import models.Employee;
-
+import models.Corso;
+import src.DB_Visualizer.DB_Visualizer
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 public class class_Interface {
     private Employee personale;
-    private String[] Corsi_List; //TODO:Ha senso fare una classe corso ??
+    private Corso[] Corsi_List;
+    private DB_Visualizer DB;
 
     class_Interface(Employee personale){
         this.personale = personale;
@@ -19,14 +23,30 @@ public class class_Interface {
         //TODO:Metodo per rimuovere un corso dal DB
     }
 
-    public ResultSet getCorsi(){
-        //TODO:Prendere la lista di tutti i corsi disponibili
-        return null;
+    public Corso[] getCorsi(){
+        //DB.generateExecute() TODO
+        ResultSet RS = DB.getResult();
+
+        List<Corso> corsi = new ArrayList<>();
+        try{
+            while(RS.next()){
+                Corso corso = new Corso(
+                        RS.getInt("id"),
+                        RS.getString("nome"),
+                        RS.getInt("durata"),
+                        RS.getInt("iscritti")
+                );
+                corsi.add(corso);
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return corsi.toArray(new Corso[0]);
     }
     public void visualizza(){
-        //Corsi_List = getCorsi(); TODO:Ci dovrà essere un alogica del genere
-        for (String corso: Corsi_List) {
-            System.out.println(corso);
+        Corsi_List = getCorsi();
+        for (Corso corso: Corsi_List) {
+            System.out.println(corso.toString());
         }
     }
 
