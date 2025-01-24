@@ -6,6 +6,7 @@ public class Employee_Interface {
     class_Interface CI;
     Interface_PT IP;
 
+
     Employee_Interface(Employee personale){
         this.personale = personale;
         this.IC = new Interface_Client(personale);

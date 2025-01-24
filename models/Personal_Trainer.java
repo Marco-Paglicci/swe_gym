@@ -1,46 +1,30 @@
 package models;
 
 public class Personal_Trainer {
-    private int idPersonalTrainer;
+    private int ID;
     private String nome;
     private String cognome;
     private int eta;
     private String descrizione;
     private double valutazione;
-
-    // Costruttore
-    public Personal_Trainer(int idPersonalTrainer, String nome, String cognome, int eta, String descrizione, double valutazione) {
-        this.idPersonalTrainer = idPersonalTrainer;
+    public Personal_Trainer(int ID, String nome, String cognome, int eta, String descrizione, double valutazione){
+        this.ID = ID;
         this.nome = nome;
         this.cognome = cognome;
         this.eta = eta;
         this.descrizione = descrizione;
         this.valutazione = valutazione;
     }
-
-    // Getter e Setter
-    public int getIdPersonalTrainer() {
-        return idPersonalTrainer;
+    public int getID(){
+        return ID;
     }
-
-    public void setIdPersonalTrainer(int idPersonalTrainer) {
-        this.idPersonalTrainer = idPersonalTrainer;
-    }
-
     public String getNome() {
+        //Dovrebbe prenderli dal DB
         return nome;
     }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
     public String getCognome() {
+        //Dovrebbe prenderlo dal DB
         return cognome;
-    }
-
-    public void setCognome(String cognome) {
-        this.cognome = cognome;
     }
 
     public int getEta() {
@@ -66,16 +50,10 @@ public class Personal_Trainer {
     public void setValutazione(double valutazione) {
         this.valutazione = valutazione;
     }
-
     @Override
-    public String toString() {
-        return "PersonalTrainer{" +
-                "idPersonalTrainer=" + idPersonalTrainer +
-                ", nome='" + nome + '\'' +
-                ", cognome='" + cognome + '\'' +
-                ", eta=" + eta +
-                ", descrizione='" + descrizione + '\'' +
-                ", valutazione=" + valutazione +
-                '}';
+    public String toString(){
+        return "PersonalTrainer{" + "idPersonalTrainer=" + ID + ", nome='" + nome + '\'' + ", cognome='" + cognome + '\'' + ", eta=" + eta +
+                ", descrizione='" + descrizione + '\'' + ", valutazione=" + valutazione + '}';
+
     }
 }

@@ -2,16 +2,18 @@ package Employee_GUI_Controller;
 import models.Employee;
 import models.Client;
 import models.Message;
+import src.DB_Visualizer.DB_Visualizer;
 
 
 import java.sql.ResultSet;
 import java.util.ArrayList;
-
+import src.DB_Visualizer.DB_Visualizer;;
 import java.util.List;
 
 public class Interface_Client {
     private Employee personale;
-    private Client[] Clienti_List;
+    private List<Client> Clienti_List;
+    private DB_Visualizer DB;
 
     Interface_Client(Employee personale){
         this.personale = personale;
@@ -22,20 +24,10 @@ public class Interface_Client {
             System.out.println(cliente.getNome()+" "+cliente.getCognome()+" "+cliente.getID());
         }
     }
-    public Client[] getClient(){
-        ResultSet RS = getClientDB(); //TODO:inserire la funzione dal DB
-        List<Client> clienti = new ArrayList<>();
-        try {
-            while (RS != null && RS.next()) {
-                Client client = new Client(
-                        RS.getInt("id"),
-                        RS.getString("nome"),
-                        RS.getString("cognome")
-                        );
-                clienti.add(client);
-            }
-        }catch(Exception e){ e.printStackTrace();}
-        return clienti.toArray(new Client[0]);
+    public List<Client> getClient(){
+        DB.generateExecute("I",2,0);//TODO manca la lista dei clienti
+        List<Client> clientlist = getclientlist();
+        return clientlist;
     }
     public void aggiungi_cliente(String nome, String cognome, int type){
         //Logica per inserire un nuovo cliente nella lista -> Interfaccia new client

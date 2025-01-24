@@ -1,20 +1,23 @@
 package Client_GUI_Controller;
 import java.sql.ResultSet;
+import java.util.List;
+
 import models.Message;
 import models.Client;
 import src.DB_Visualizer.DB_Visualizer;
 public class Notification_Interface {
     private DB_Visualizer DB;
     private Client utente;
+    private List<Message> messaggi;
     Notification_Interface(Client utente){
         this.utente = utente;
     }
-    public ResultSet getMessaggi(){
+    public List<Message> getMessaggi(){
         //Restituisce i messaggi in formato ResultSet dal DB
         System.out.println("Recuperando informazioni dal database...");
-        DB.generateExecute(5, utente.getID());
-        ResultSet RS = DB.getResult();
-        return RS;
+        DB.generateExecute("C",5, utente.getID());
+        List<Message> messaggilist = DB.getmessaggilist();
+        return messaggilist;
     }
     public void message_reply(int destinatario, String message){
         //Chiamata a send messagge della classe message interface
@@ -30,5 +33,9 @@ public class Notification_Interface {
     }
     public void visualizza(){
         //Classica logica per visualizzare
+        messaggi = getMessaggi();
+        for(Message messaggio : messaggi){
+            System.out.println("Messagio da "+messaggio.getSender()+ ": "+messaggio.getContent());
+        }
     }
 }

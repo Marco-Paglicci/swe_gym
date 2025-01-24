@@ -9,7 +9,7 @@ import java.util.List;
 
 public class Book_Interface {
     private Personal_Trainer PT;
-    private Client[] bookedC_list;
+    private List<Client> bookedC_list;
     private DB_Visualizer DB;
 
     Book_Interface(Personal_Trainer PT){
@@ -25,21 +25,10 @@ public class Book_Interface {
         }
 
     }
-    public Client[] getClientBooked(){
-        DB.generateExecute(4,PT.getID());
-        ResultSet RS = DB.getResult();
-        List<Client> clienti = new ArrayList<>();
-        try{
-            while(RS.next()){
-                Client cliente = new Client(
-                        RS.getInt("U_ID"),
-                        RS.getString("nome"),
-                        RS.getString("cognome")
-                );
-                clienti.add(cliente);
-            }
-        }catch(Exception e){e.printStackTrace();}
-        return clienti.toArray(new Client[0]);
+    public List<Client> getClientBooked(){
+        DB.generateExecute("P",4,PT.getID());
+        List <Client> clientlist = DB.getclientlist();
+        return clientlist;
     }
     public void accept(Client client) {
         // Logica per accettare un appuntamento

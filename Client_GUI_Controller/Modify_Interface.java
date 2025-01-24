@@ -11,5 +11,6 @@ public class Modify_Interface {
     }
     public void visualizza(){
         //Classica funzione di visualizzazione
+        System.out.println("Pagina di modifica delle informazioni");
     }
 }

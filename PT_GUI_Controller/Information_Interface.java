@@ -14,25 +14,15 @@ public class Information_Interface {
     }
     public void visualizza() {
         // Logica per visualizzare le informazioni del PT
-        getInformazioni();
+        PT = getInformazioni();
+        System.out.println(PT.toString());
     }
 
-    public void getInformazioni() {
+    public Personal_Trainer getInformazioni() {
         System.out.println("Recuperando informazioni dal database...");
         DB.generateExecute();//TODO:metodo per informazioni di PT
-        ResultSet RS = DB.getResult();
-
-        try{
-            while(RS.next()){
-                int ID = RS.getInt("PT_ID");
-                String nome = RS.getString("nome");
-                String cognome = RS.getString("cognome");
-                System.out.println("Informazioni\n");
-                System.out.println("ID: "+ID+", nome: "+nome+", cognome: "+cognome);
-            }
-
-        }catch(Exception e){e.printStackTrace();}
-
+        Personal_Trainer PTDB = DB.getPersonalTrainer();
+        return PTDB;
     }
 
     public void modificaInformazioni() {

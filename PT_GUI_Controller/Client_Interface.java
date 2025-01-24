@@ -9,7 +9,7 @@ import java.util.List;
 
 public class Client_Interface {
     private Personal_Trainer PT;
-    private Client[] client_list;
+    private List<Client> client_list;
     private DB_Visualizer DB;
     Book_Interface BI;
 
@@ -17,26 +17,12 @@ public class Client_Interface {
         this.PT = PT;
          this.BI = new Book_Interface(PT);
     }
-    public Client[] getClienti() {
+    public List<Client> getClienti() {
         // Logica per recuperare i clienti
         System.out.println("Recupero informazione dal database...");
         DB.generateExecute();//TODO non c'è ancora la getClienti nel DB
-        ResultSet RS = DB.getResult();
-
-        List<Client> clienti = new ArrayList<>();
-
-        try{
-            while(RS.next()){
-                Client cliente = new Client(
-                        RS.getInt("U_ID"),
-                        RS.getString("nome"),
-                        RS.getString("cognome")
-                );
-                clienti.add(cliente);
-            }
-        }catch(Exception e){e.printStackTrace();}
-
-        return clienti.toArray(new Client[0]);
+        List<Client> clientlist= DB.getclientlist();
+        return clientlist;
     }
 
     public void visualizza() {
