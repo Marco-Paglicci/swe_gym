@@ -1,12 +1,13 @@
 package Client_GUI_Controller;
 import java.sql.ResultSet;
 import java.util.List;
-
+import src.DB_Add.Add_Controller;
 import models.Client;
 import models.Corso;
 import src.DB_Visualizer.DB_Visualizer;
 public class class_Interface {
     private DB_Visualizer DB;
+    private Add_Controller AC;
     private Client utente;
     private List<Corso> corsi;
     private List<Corso> corsiIscritto;
@@ -24,9 +25,11 @@ public class class_Interface {
         DB.generateExecute("P",2, utente.getID());
         return DB.getResult_list(); //Lista di corsi
     }
-    public void iscrizione_corso(int Corso_ID){
+    public void iscrizione_corso(Corso corso){
         //Logica per andare ad iscrivere l'utente con ID al corso con ID
-        //todo iscrizione ad un corso
+        if(AC.add_corso(utente.getID(), corso,"C")){
+            System.out.println("Iscrizione avvenuta con successo");
+        }else System.out.println("Iscrizione negata...");
     }
     public void visualizza(){
         //Classica logica per visualizzazione

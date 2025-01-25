@@ -1,7 +1,9 @@
 package PT_GUI_Controller;
 import models.Personal_Trainer;
+import src.DB_Modify.Modify_Controller;
 public class Modify_Interface {
     private Personal_Trainer PT;
+    private Modify_Controller MC;
     public Modify_Interface(Personal_Trainer PT){
         this.PT = PT;
     }
@@ -12,7 +14,8 @@ public class Modify_Interface {
 
     public void modificaInformazioni(String nome, String cognome) {
         // Modifica i dati del Personal Trainer sul DB
-        System.out.println("Informazioni aggiornate: " + PT.getNome() + " " + PT.getCognome());
-        //TODO:Metodo per modificare i dati dal DB da implementare
+        if(MC.modifica_informazioni(PT.getID(),nome,cognome,"P")){
+            System.out.println("Modifica avvenuta con successo");
+        }else System.out.println("Modifica negata...");
     }
 }

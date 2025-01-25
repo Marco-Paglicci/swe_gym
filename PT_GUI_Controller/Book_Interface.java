@@ -2,6 +2,7 @@ package PT_GUI_Controller;
 import models.Personal_Trainer;
 import models.Client;
 import src.DB_Visualizer.DB_Visualizer;
+import src.DB_Remove.Remove_Controller;
 
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -11,6 +12,7 @@ public class Book_Interface {
     private Personal_Trainer PT;
     private List<Client> bookedC_list;
     private DB_Visualizer DB;
+    private Remove_Controller RC;
 
     Book_Interface(Personal_Trainer PT){
         this.PT = PT;
@@ -33,8 +35,10 @@ public class Book_Interface {
 
     public void refuse(Client client) {
         // Logica per rifiutare un appuntamento
+        if(RC.remove_appuntamento(PT.getID(),client.getID(),"P")){
         System.out.println("Appuntamento rifiutato tra PT: " + PT.getID() +
                 " e cliente: " + client.getID());
-        //todo implement
+        }else System.out.println("Cancellazione appuntamento negata...");
+
     }
 }

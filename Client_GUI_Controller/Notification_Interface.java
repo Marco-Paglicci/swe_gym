@@ -21,10 +21,9 @@ public class Notification_Interface {
     }
     public void message_reply(int destinatario, String message){
         //Chiamata a send messagge della classe message interface
-
         Message_Interface MI = new Message_Interface();
         Message M = new Message(utente.getID(),destinatario , message);
-        MI.sendMessage(M); //TODO:In realtà credo che serva perché qua dovremo caricare il messaggio sul DB
+        MI.sendMessage(M);
     }
     public void gestione_appuntamento(){
         //Chiamata a interfaccia appuntamento

@@ -33,9 +33,9 @@ public class PT_Interface {
         DB.generateExecute("C",3,utente.getID());
         return DB.getResult_list(); //Lista dei personal trainer associati all'utente
     }
-    public void addReview(int PT_ID){
+    public void addReview(Personal_Trainer PT){
         //Chiamata a interfaccia recensioni
-        Review_Interface RI = new Review_Interface(PT_ID,utente);
+        Review_Interface RI = new Review_Interface(PT,utente);
         RI.visualizza();
     }
     public void visualizza(){

@@ -51,28 +51,27 @@ public class Add_Controller {
         return false;
     }
 
-    public boolean add_messaggio(int ID_mittente, int ID_destinatario, Message M, String type) {
+    public boolean add_messaggio(Message M, String type) {
         System.out.println(" add Messaggio");
-        //todo usare M e basta
         switch (type) {
 
             case "C":
                 query = "INSERTO INTO messaggio_u_pt (mittente,destinatario,messaggio)" +
-                        "VALUES ( " + ID_mittente + "," + ID_destinatario + "," + M.getContent() + ")";
+                        "VALUES ( " + M.getSender() + "," + M.getReceiver() + "," + M.getContent() + ")";
                 break;
 
 
             case "P":
 
                 query = "INSERTO INTO messaggio_pt_u (mittente,destinatario,messaggio)" +
-                        "VALUES ( " + ID_mittente + "," + ID_destinatario + "," + M.getContent() + ")";
+                        "VALUES ( " + M.getSender() + "," + M.getReceiver() + "," + M.getContent() + ")";
                 break;
 
 
             case "I":
 
                 query = "INSERTO INTO messaggio_p_u (mittente,destinatario,messaggio)" +
-                        "VALUES ( " + ID_mittente + "," + ID_destinatario + "," + M.getContent() + ")";
+                        "VALUES ( " + M.getSender() + "," + M.getReceiver() + "," + M.getContent() + ")";
                 break;
         }
         Qy = QF.createQuery(query);

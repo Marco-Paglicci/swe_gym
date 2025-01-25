@@ -84,18 +84,15 @@ public class Remove_Controller
             return false;
         }
     }
-
-    public boolean remove_appuntamento(int ID,int id_,String orario,String type)
+    //todo ma orario non lo usi nemmeno nella query
+    public boolean remove_appuntamento(int ID,int id_,/*String orario,*/String type)
     {
         switch (type) {
-
-
             case "C":
 
                 query = "DELETE FROM appuntamento " +
                         "WHERE idUtente = " + ID + "AND idPersonaltrainer =" + id_;
                 break;
-
 
             case "P":
 
