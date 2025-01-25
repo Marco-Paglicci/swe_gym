@@ -25,9 +25,8 @@ public class Interface_Client {
         }
     }
     public List<Client> getClient(){
-        DB.generateExecute("I",2,0);//TODO manca la lista dei clienti
-        List<Client> clientlist = getclientlist();
-        return clientlist;
+        DB.generateExecute("I",7,personale.getID());
+        return DB.getResult_list(); //Lista di clienti
     }
     public void aggiungi_cliente(String nome, String cognome, int type){
         //Logica per inserire un nuovo cliente nella lista -> Interfaccia new client

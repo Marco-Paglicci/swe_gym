@@ -1,7 +1,8 @@
 package PT_GUI_Controller;
 import models.Personal_Trainer;
-import java.sql.ResultSet;
 import src.DB_Visualizer.DB_Visualizer;
+
+import java.util.List;
 
 public class Information_Interface {
     private Personal_Trainer PT;
@@ -20,9 +21,9 @@ public class Information_Interface {
 
     public Personal_Trainer getInformazioni() {
         System.out.println("Recuperando informazioni dal database...");
-        DB.generateExecute();//TODO:metodo per informazioni di PT
-        Personal_Trainer PTDB = DB.getPersonalTrainer();
-        return PTDB;
+        DB.generateExecute("P",1, PT.getID());
+        List<Personal_Trainer> PTDB = DB.getResult_list(); //TODO:Qua devo usarae getResult o sempre Resultlist
+        return PTDB.getFirst();
     }
 
     public void modificaInformazioni() {

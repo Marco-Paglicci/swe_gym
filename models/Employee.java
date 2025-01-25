@@ -34,4 +34,9 @@ public class Employee {
     public void setCognome(String cognome) {
         this.cognome = cognome;
     }
+
+    @Override
+    public String toString(){
+        return "Impiegato "+ID+", Nome: "+nome+", Cognome: "+cognome;
+    }
 }

@@ -82,7 +82,9 @@ public class DB_Visualizer {
         return result;
     }
 
-    public List<Object> getResult_list() {
+    //todo:controlla se ho fatto bene a tipizzare questa func
+    //praticamente può prendere ogni oggetto come risulato e non solo Object
+    public <T> List<T> getResult_list() {
         return result_list;
     }
 

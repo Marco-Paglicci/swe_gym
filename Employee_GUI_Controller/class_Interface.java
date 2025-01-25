@@ -24,9 +24,8 @@ public class class_Interface {
     }
 
     public List<Corso> getCorsi(){
-        DB.generateExecute("I",3,0); //TODO manca
-        List<Corso> corsi = DB.getcorsilist();
-        return corsi;
+        DB.generateExecute("I",2,personale.getID());
+        return DB.getResult_list(); //Lista di corsi
     }
     public void visualizza(){
         Corsi_List = getCorsi();

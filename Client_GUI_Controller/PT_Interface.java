@@ -11,6 +11,7 @@ import java.util.List;
 public class PT_Interface {
     private Client utente;
     private List<Personal_Trainer> PT_list;
+    private List<Personal_Trainer> PT_listAssociati;
     private DB_Visualizer DB;
     PT_Interface(Client utente){
         this.utente = utente;
@@ -21,11 +22,16 @@ public class PT_Interface {
         MI.visualizza();
     }
     public List<Personal_Trainer> getPT(){
-        //Restituisce i PT in formato ResultSet dal DB
+        //Restituisce i PT dal DB
+        System.out.println("Recuperando informazioni dal database...");
+        DB.generateExecute("I",3,utente.getID());
+        return DB.getResult_list(); //Lista di tutti i personal trainer
+    }
+    public List<Personal_Trainer> getPTAssociati(){
+        //Restituisce i PT associato all'utente
         System.out.println("Recuperando informazioni dal database...");
         DB.generateExecute("C",3,utente.getID());
-        List<Personal_Trainer> ptlist = DB.getPTlist();
-        return ptlist;
+        return DB.getResult_list(); //Lista dei personal trainer associati all'utente
     }
     public void addReview(int PT_ID){
         //Chiamata a interfaccia recensioni
@@ -35,8 +41,14 @@ public class PT_Interface {
     public void visualizza(){
         //Classica logica per la visualizzazione
         PT_list = getPT();
+        System.out.println("Lista di tutti i personal trainer della palestra: ");
         for(Personal_Trainer PT : PT_list){
-            PT.toString();
+            System.out.println(PT.toString());
+        }
+        PT_listAssociati = getPTAssociati();
+        System.out.println("Lista di tutti i personal trainer associati a te : ");
+        for(Personal_Trainer PT : PT_listAssociati){
+            System.out.println(PT.toString());
         }
     }
 }

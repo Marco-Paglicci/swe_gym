@@ -1,11 +1,12 @@
 package Client_GUI_Controller;
 import models.Client;
 import java.sql.ResultSet;
+import java.util.List;
+
 import src.DB_Visualizer.DB_Visualizer;
 public class Information_Interface {
     private Client utente;
     private DB_Visualizer DB;
-    private ResultSet RS;
     Information_Interface(Client utente){
         this.utente = utente;
     }
@@ -18,8 +19,8 @@ public class Information_Interface {
         //Restituisce informazioni in formato ResultSet dal DB
         System.out.println("Recuperando informazioni dal database...");
         DB.generateExecute("C",1, utente.getID());
-        Client cliente = DB.getcliente();
-        return cliente;
+        List<Client> cliente = DB.getResult_list();
+        return cliente.getFirst();
     }
     public void modifica_informazioni(){
         //Chiamata a interfaccia modifica info

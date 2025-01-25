@@ -23,13 +23,13 @@ public class Messaggi_Strategy implements Strategy {
     public List<Message> execute(String type,int ID) {
 
         System.out.println("Executing Messaggi query...");
-
+        //todo ho cambiato la logica di visualizzaizone dei messaggi
         switch(type)
         {
             case "C":
                 query = "SELECT * " +
-                        "FROM messaggio u_pt" +
-                        "WHERE messaggio u_pt.mittente = " + ID;
+                        "FROM messaggio pt_u" +
+                        "WHERE messaggio pt_u.destinatario = " + ID;
                 Qy = QF.createQuery(query);
                 result_list = MDAO.getAllMessagebyId(Qy);
                 if(result_list != null)
@@ -41,8 +41,8 @@ public class Messaggi_Strategy implements Strategy {
 
             case "P":
                 query = "SELECT * " +
-                        "FROM messaggio pt_u" +
-                        "WHERE messaggio pt_u.mittente = " + ID;
+                        "FROM messaggio u_pt" +
+                        "WHERE messaggio u_pt.destinatario = " + ID;
                 Qy = QF.createQuery(query);
                 result_list = MDAO.getAllMessagebyId(Qy);
                 if(result_list != null)

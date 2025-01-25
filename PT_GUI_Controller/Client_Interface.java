@@ -2,9 +2,6 @@ package PT_GUI_Controller;
 import models.Personal_Trainer;
 import models.Client;
 import src.DB_Visualizer.DB_Visualizer;
-
-import java.sql.ResultSet;
-import java.util.ArrayList;
 import java.util.List;
 
 public class Client_Interface {
@@ -20,8 +17,8 @@ public class Client_Interface {
     public List<Client> getClienti() {
         // Logica per recuperare i clienti
         System.out.println("Recupero informazione dal database...");
-        DB.generateExecute();//TODO non c'è ancora la getClienti nel DB
-        List<Client> clientlist= DB.getclientlist();
+        DB.generateExecute("P",7,PT.getID());
+        List<Client> clientlist= DB.getResult_list();
         return clientlist;
     }
 

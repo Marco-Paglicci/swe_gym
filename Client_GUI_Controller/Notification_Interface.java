@@ -16,7 +16,7 @@ public class Notification_Interface {
         //Restituisce i messaggi in formato ResultSet dal DB
         System.out.println("Recuperando informazioni dal database...");
         DB.generateExecute("C",5, utente.getID());
-        List<Message> messaggilist = DB.getmessaggilist();
+        List<Message> messaggilist = DB.getResult_list();
         return messaggilist;
     }
     public void message_reply(int destinatario, String message){
