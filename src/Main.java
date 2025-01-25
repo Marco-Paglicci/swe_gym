@@ -9,7 +9,7 @@ import java.sql.Statement;
 
 public class Main {
 
-    //todo implementare questa logica di connessione sul database
+    //todo implementare ACCESS
     public static void main(String[] args) {
         System.out.println("Inizio test della connessione al database...");
 

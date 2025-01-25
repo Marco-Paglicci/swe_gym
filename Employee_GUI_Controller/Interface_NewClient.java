@@ -1,6 +1,9 @@
 package Employee_GUI_Controller;
 import models.Client;
 import models.Subscrition;
+
+import java.sql.Date;
+
 public class Interface_NewClient {
     private String nome;
     private String cognome;
@@ -12,8 +15,11 @@ public class Interface_NewClient {
     }
     public void aggiungi_cliente(){
         //Logica per la creazione di un nuovo abbonato
-        Subscrition s1 = new Subscrition(true,); //todo merge then fix issue
+        //inizializzata nella GUI
+        Date scadenza = null;
+        Subscrition s1 = new Subscrition(true,scadenza);
         Client c1 = new Client(23,nome,cognome, s1);
+
         //TODO:Andrà aggiunto nel DB, capiamo come gestire l'ID
     }
 }

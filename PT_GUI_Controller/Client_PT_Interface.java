@@ -8,7 +8,7 @@ public class Client_PT_Interface {
         this.PT = PT;
         this.client = cliente;
     }
-    //TODO: nell'uml c'era una getclienti abbastanza inutile
+
 
     public void visualizza() {
         // Logica per visualizzare i dettagli
@@ -17,7 +17,8 @@ public class Client_PT_Interface {
 
     public void fissaAppuntamento(int data, int orario, String type) {
         // Logica per fissare un appuntamento con il cliente selezionato
-        //TODO: magari qua mandiamo una notifica al cliente che ha un appuntamento fissato in quel giorno e orario ??
+
+        //todo add Appuntamento con Add_controler
         System.out.println("Appuntamento fissato con il" + client.toString());
     }
 }

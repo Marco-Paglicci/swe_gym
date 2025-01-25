@@ -8,7 +8,7 @@ import java.util.List;
 public class DB_Visualizer {
     private String q_string;
     private Query query;
-    private Object result;
+
     private List result_list;
 
     private Strategy strategy;
@@ -78,19 +78,14 @@ public class DB_Visualizer {
         this.query = query;
     }
 
-    public Object getResult() {
-        return result;
-    }
 
-    //todo:controlla se ho fatto bene a tipizzare questa func
-    //praticamente può prendere ogni oggetto come risulato e non solo Object
+
+
     public <T> List<T> getResult_list() {
         return result_list;
     }
 
-    public void setResult(ResultSet result) {
-        this.result = result;
-    }
+
 
 
 }

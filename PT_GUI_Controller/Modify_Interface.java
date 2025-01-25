@@ -13,6 +13,6 @@ public class Modify_Interface {
     public void modificaInformazioni(String nome, String cognome) {
         // Modifica i dati del Personal Trainer sul DB
         System.out.println("Informazioni aggiornate: " + PT.getNome() + " " + PT.getCognome());
-        //TODO:Metodo per modificare i dati dal DB
+        //TODO:Metodo per modificare i dati dal DB da implementare
     }
 }

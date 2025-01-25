@@ -29,16 +29,12 @@ public class Book_Interface {
         DB.generateExecute("P",4,PT.getID());
         return DB.getResult_list();//Lista degli appuntamenti che il personale trainer ha fissato
     }
-    public void accept(Client client) {
-        // Logica per accettare un appuntamento
-        System.out.println("Appuntamento accettato tra PT: " + PT.getID() +
-                " e cliente: " + client.getID());
-        //TODO:inverà un messaggio all'utente con scritto il PT ha acceatto/rifuitato la tua richiesta
-    }
+
 
     public void refuse(Client client) {
         // Logica per rifiutare un appuntamento
         System.out.println("Appuntamento rifiutato tra PT: " + PT.getID() +
                 " e cliente: " + client.getID());
+        //todo implement
     }
 }

@@ -19,7 +19,7 @@ public class Information_Interface {
         System.out.println("Recuperando informazioni dal database...");
         DB.generateExecute("I",1, personale.getID());
         List<Employee> impiegato = DB.getResult_list();
-        return impiegato.getFirst();
+        return impiegato.get(0);
     }
     public void modifica_informazioni(){
         //todo capiamo se serve anche qui un interfaccia di modifica

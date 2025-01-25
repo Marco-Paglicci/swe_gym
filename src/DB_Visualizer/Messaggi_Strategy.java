@@ -23,7 +23,7 @@ public class Messaggi_Strategy implements Strategy {
     public List<Message> execute(String type,int ID) {
 
         System.out.println("Executing Messaggi query...");
-        //todo ho cambiato la logica di visualizzaizone dei messaggi
+
         switch(type)
         {
             case "C":
