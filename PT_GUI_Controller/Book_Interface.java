@@ -27,8 +27,7 @@ public class Book_Interface {
     }
     public List<Client> getClientBooked(){
         DB.generateExecute("P",4,PT.getID());
-        List <Client> clientlist = DB.getclientlist();
-        return clientlist;
+        return DB.getResult_list();//Lista degli appuntamenti che il personale trainer ha fissato
     }
     public void accept(Client client) {
         // Logica per accettare un appuntamento

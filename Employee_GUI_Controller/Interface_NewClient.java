@@ -12,7 +12,7 @@ public class Interface_NewClient {
     }
     public void aggiungi_cliente(){
         //Logica per la creazione di un nuovo abbonato
-        Subscrition s1 = new Subscrition(); //todo merge then fix issue
+        Subscrition s1 = new Subscrition(true,); //todo merge then fix issue
         Client c1 = new Client(23,nome,cognome, s1);
         //TODO:Andrà aggiunto nel DB, capiamo come gestire l'ID
     }

@@ -7,6 +7,7 @@ import java.util.List;
 public class Client_Interface {
     private Personal_Trainer PT;
     private List<Client> client_list;
+    private List<Client> ALLclient_list;
     private DB_Visualizer DB;
     Book_Interface BI;
 
@@ -14,19 +15,28 @@ public class Client_Interface {
         this.PT = PT;
          this.BI = new Book_Interface(PT);
     }
-    public List<Client> getClienti() {
+    public List<Client> getClientiAssociati() {
         // Logica per recuperare i clienti
         System.out.println("Recupero informazione dal database...");
         DB.generateExecute("P",7,PT.getID());
-        List<Client> clientlist= DB.getResult_list();
-        return clientlist;
+        return DB.getResult_list(); //Lista dei clienti relativi al personal trainer
+    }
+    public List<Client> getClienti(){
+        System.out.println("Recupero informazione dal database...");
+        DB.generateExecute("I",7,PT.getID());
+        return DB.getResult_list(); //Lista di tutti i clienti
     }
 
     public void visualizza() {
         // Logica per visualizzare i clienti
         System.out.println("Visualizzando clienti per il PT: " + PT.getNome());
-        client_list = getClienti();
+        client_list = getClientiAssociati();
         for(Client cliente: client_list){
+            System.out.println(cliente.toString());
+        }
+        System.out.println("Visualizzando tutti i clienti nel sistema");
+        ALLclient_list = getClienti();
+        for(Client cliente: ALLclient_list){
             System.out.println(cliente.toString());
         }
     }

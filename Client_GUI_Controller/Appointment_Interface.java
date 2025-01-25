@@ -15,11 +15,7 @@ public class Appointment_Interface {
         //Restituisce gli appuntamenti in formato ResultSet dal DB
         System.out.println("Recuperando informazioni dal database...");
         DB.generateExecute("C",4,utente.getID());
-        List<String> appuntamenti = DB.getappuntamentilist();
-        return appuntamenti;
-    }
-    public void esporta(){
-        //TODO:non so cosa volevamo intendere
+        return DB.getResult_list(); //Lista di Stringhe che contengono gli appuntamenti del cliente
     }
     public void visualizza(){
         //Classica logica per visualizzazione

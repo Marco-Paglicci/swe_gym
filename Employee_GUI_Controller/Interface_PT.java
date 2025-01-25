@@ -35,9 +35,8 @@ public class Interface_PT {
     }
 
     public List<Personal_Trainer> getPT(){
-        System.out.println("Recupero i persnal trainer disponibili dal DB...");
-        DB.generateExecute("I",3,0);
-        List<Personal_Trainer> PTlist = DB.getpersonaltrainerlist();
-        return PTlist;
+        System.out.println("Recupero i personal trainer disponibili dal DB...");
+        DB.generateExecute("I",3, personale.getID());
+        return DB.getResult_list(); //Lista di tutti i personal trainer nel sistema
     }
 }

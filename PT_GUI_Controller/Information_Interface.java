@@ -22,7 +22,7 @@ public class Information_Interface {
     public Personal_Trainer getInformazioni() {
         System.out.println("Recuperando informazioni dal database...");
         DB.generateExecute("P",1, PT.getID());
-        List<Personal_Trainer> PTDB = DB.getResult_list(); //TODO:Qua devo usarae getResult o sempre Resultlist
+        List<Personal_Trainer> PTDB = DB.getResult_list();
         return PTDB.getFirst();
     }
 
