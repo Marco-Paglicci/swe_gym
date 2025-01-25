@@ -31,17 +31,13 @@ public class Personal_Trainer {
         return eta;
     }
 
-    public void setEta(int eta) {
-        this.eta = eta;
-    }
+
 
     public String getDescrizione() {
         return descrizione;
     }
 
-    public void setDescrizione(String descrizione) {
-        this.descrizione = descrizione;
-    }
+
 
     public double getValutazione() {
         return valutazione;
@@ -49,6 +45,14 @@ public class Personal_Trainer {
 
     public void setValutazione(double valutazione) {
         this.valutazione = valutazione;
+    }
+
+    public void setDescrizione(String descrizione) {
+        this.descrizione = descrizione;
+    }
+
+    public void setEta(int eta) {
+        this.eta = eta;
     }
     @Override
     public String toString(){
