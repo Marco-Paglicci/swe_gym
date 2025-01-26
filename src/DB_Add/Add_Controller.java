@@ -4,19 +4,24 @@ import models.Client;
 import models.Corso;
 import models.Message;
 import models.Personal_Trainer;
+import src.Query_Executer.Database;
 import src.Query_Executer.Execute_Query;
+import src.Query_Executer.QueryExecutionStrategy;
 import src.Query_Factory.Query;
 import src.Query_Factory.QueryFactory;
+import src.Query_Factory.QueryFactory_Imp;
+
+import java.sql.Connection;
+import java.sql.ResultSet;
 
 public class Add_Controller {
 
     boolean result = false;
-
     String query;
-    QueryFactory QF;
+    QueryFactory_Imp QF = new QueryFactory_Imp();
     Query Qy;
+    Execute_Query EQ = new Execute_Query();
 
-    Execute_Query EQ;
 
     /*----------------------------------------QUERY DI ADD-------------------------------*/
 
@@ -42,6 +47,7 @@ public class Add_Controller {
                 break;
         }
         Qy = QF.createQuery(query);
+        System.out.println("Query creata : " + Qy.toString());
         result = EQ.executeModify(Qy);
         if (result) {
             return result;
@@ -132,20 +138,17 @@ public class Add_Controller {
 
             case "I":
 
-                query = "INSERT INTO utenti (idUtenti, Nome, Cognome, MetodoPagamento, scadenza, premium)" +
-                        "VALUES (" + cliente.getID() + "," +
-                        cliente.getNome() + "," +
-                        cliente.getCognome() + "," +
-                        cliente.getSubscrition().getExpiration() + "," +
-                        cliente.getSubscrition().isSub_type() + ")";
+                query = "INSERT INTO utenti (idUtenti, Nome, Cognome, metodo_di_pagamento, scadenza, premium) " +
+                        "VALUES (" + cliente.getID() + ", '" + cliente.getNome() + "', '" + cliente.getCognome() + "', " +
+                        "'carta', '" + cliente.getSubscrition().getExpiration() + "', " + cliente.getSubscrition().isSub_type() + ")";
+
                 break;
         }
         Qy = QF.createQuery(query);
         result = EQ.executeModify(Qy);
         if (result) {
-            return result;
+            return true;
         } else
-
             System.out.println("errore update Query");
         return false;
     }

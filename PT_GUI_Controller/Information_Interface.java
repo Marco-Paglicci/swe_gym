@@ -23,7 +23,7 @@ public class Information_Interface {
         System.out.println("Recuperando informazioni dal database...");
         DB.generateExecute("P",1, PT.getID());
         List<Personal_Trainer> PTDB = DB.getResult_list();
-        return PTDB.getFirst();
+        return PTDB.get(0);
     }
 
     public void modificaInformazioni() {

@@ -13,7 +13,7 @@ public class Main {
 
     //todo implementare ACCESS
     public static void main(String[] args) {
-        System.out.println("Inizio test della connessione al database...");
+        System.out.println("Inizio test.test della connessione al database...");
 
         // Istanzia il database
         Database db = new MySQL_DB();

@@ -6,6 +6,7 @@ import src.DB_Visualizer.DB_Visualizer;
 import src.DB_Remove.Remove_Controller;
 import src.DB_Add.Add_Controller;
 
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import src.DB_Visualizer.DB_Visualizer;
@@ -18,7 +19,7 @@ public class Interface_Client {
     private Remove_Controller RC;
     private Add_Controller AC;
 
-    Interface_Client(Employee personale){
+    public Interface_Client(Employee personale){
         this.personale = personale;
     }
     public void visualizza(){
@@ -31,10 +32,11 @@ public class Interface_Client {
         DB.generateExecute("I",7,personale.getID());
         return DB.getResult_list(); //Lista di clienti
     }
-    public void aggiungi_cliente(int ID,String nome, String cognome){
+    public void aggiungi_cliente(int ID, String nome, String cognome, Date data){
         //Logica per inserire un nuovo cliente nella lista -> Interfaccia new client
         //Lazy initialization
-        Interface_NewClient INC = new Interface_NewClient(ID,nome, cognome);
+        Interface_NewClient INC = new Interface_NewClient(ID,nome, cognome, data);
+
         INC.aggiungi_cliente();
     }
     public void eliminia_cliente(Client cliente){

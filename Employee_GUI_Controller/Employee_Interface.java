@@ -8,7 +8,7 @@ public class Employee_Interface {
     Information_Interface II;
 
 
-    Employee_Interface(Employee personale){
+    public Employee_Interface(Employee personale){
         this.personale = personale;
         this.IC = new Interface_Client(personale);
         this.CI = new class_Interface(personale);

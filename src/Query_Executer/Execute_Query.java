@@ -12,17 +12,12 @@ import java.sql.SQLException;
 
 public class Execute_Query {
 
-    private Database DB;
-    private QueryExecutionStrategy strategy;
+    private final MySQL_DB DB = new MySQL_DB()  ;
+    private  QueryExecutionStrategy strategy = new DefaultQueryExecutionStrategy(DB);
 
+    public Execute_Query() {
 
-
-    public Execute_Query(Database DB, QueryExecutionStrategy Strategy)
-    {
-        this.DB = DB;
-        this.strategy = Strategy;
     }
-
 
     /**
      * Esegue una query di lettura e restituisce il ResultSet.
@@ -58,6 +53,9 @@ public class Execute_Query {
             PreparedStatement statement = connection.prepareStatement(query.getQuery());
 
             // Usa la strategia per eseguire la query
+
+            System.out.println("Query da eseguire " + query.toString());
+
             return strategy.executeModifyQuery(query.getQuery());
 
         } catch (SQLException e) {

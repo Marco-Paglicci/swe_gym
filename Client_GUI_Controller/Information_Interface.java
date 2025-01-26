@@ -20,7 +20,7 @@ public class Information_Interface {
         System.out.println("Recuperando informazioni dal database...");
         DB.generateExecute("C",1, utente.getID());
         List<Client> cliente = DB.getResult_list();
-        return cliente.getFirst();
+        return cliente.get(0);
     }
     public void modifica_informazioni(){
         //Chiamata a interfaccia modifica info

@@ -15,4 +15,11 @@ public class Query {
     public void setQuery(String query) {
         this.content = query;
     }
+
+    @Override
+    public String toString() {
+        return "Query{" +
+                "content='" + content + '\'' +
+                '}';
+    }
 }
