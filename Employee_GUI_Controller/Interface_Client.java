@@ -8,7 +8,7 @@ import src.DB_Add.Add_Controller;
 
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import src.DB_Visualizer.DB_Visualizer;;
+import src.DB_Visualizer.DB_Visualizer;
 import java.util.List;
 
 public class Interface_Client {

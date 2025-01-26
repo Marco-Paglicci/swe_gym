@@ -5,6 +5,7 @@ public class Employee_Interface {
     Interface_Client IC;
     class_Interface CI;
     Interface_PT IP;
+    Information_Interface II;
 
 
     Employee_Interface(Employee personale){
@@ -12,9 +13,11 @@ public class Employee_Interface {
         this.IC = new Interface_Client(personale);
         this.CI = new class_Interface(personale);
         this.IP = new Interface_PT(personale);
+        this.II = new Information_Interface(personale);
     }
     public void visualizza_informazioni(){
         // Logica per visualizzare le informazioni -> Interfaccia informazioni
+        II.visualizza();
     }
     public void tabella_clienti(){
         //Logica per mostrare la tabella dei clienti -> Interfaccia clienti

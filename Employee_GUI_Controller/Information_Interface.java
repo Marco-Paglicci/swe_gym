@@ -9,6 +9,9 @@ public class Information_Interface {
     private Employee personale;
     private DB_Visualizer DB;
     private Modify_Controller MC;
+    public Information_Interface(Employee personale){
+        this.personale = personale;
+    }
 
     public void visualizza(){
         System.out.println("Informazioni dell'impiegato:");

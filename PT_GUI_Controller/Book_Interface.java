@@ -3,9 +3,6 @@ import models.Personal_Trainer;
 import models.Client;
 import src.DB_Visualizer.DB_Visualizer;
 import src.DB_Remove.Remove_Controller;
-
-import java.sql.ResultSet;
-import java.util.ArrayList;
 import java.util.List;
 
 public class Book_Interface {

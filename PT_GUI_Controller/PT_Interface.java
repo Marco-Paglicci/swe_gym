@@ -22,7 +22,7 @@ public class PT_Interface {
         // Logica per mostrare la tabella dei clienti -> Interfaccia clienti
         CI.visualizza();
     }
-    public void recensioni(Object PT){
+    public void recensioni(){
         // Logica per mostrare le recensioni del Personal Trainer -> Interfaccia recensioni
         RI.visualizza();
     }
