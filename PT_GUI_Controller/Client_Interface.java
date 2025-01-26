@@ -11,7 +11,7 @@ public class Client_Interface {
     private DB_Visualizer DB;
     Book_Interface BI;
 
-    Client_Interface(Personal_Trainer PT){
+    public Client_Interface(Personal_Trainer PT){
         this.PT = PT;
          this.BI = new Book_Interface(PT);
     }
@@ -53,5 +53,9 @@ public class Client_Interface {
         // Logica per visualizzare le richieste dei clienti
         System.out.println("Visualizzando richieste per il PT: " + PT.getNome());
         BI.visualizza();
+    }
+
+    public List<Client> getClient_list() {
+        return client_list;
     }
 }

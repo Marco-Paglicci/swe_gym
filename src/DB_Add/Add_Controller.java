@@ -131,7 +131,7 @@ public class Add_Controller {
 
             case "P":
 
-                query = "INSERTO INTO affiliazione (idUtente,idPersonaltrainer)" +
+                query = "INSERTO INTO affilliazione (idUtente,idPersonaltrainer)" +
                         "VALUES ( " + cliente.getID() + "," + ID + ")";
                 break;
 

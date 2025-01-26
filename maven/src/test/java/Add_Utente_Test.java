@@ -9,18 +9,18 @@ import org.junit.Before;
 import org.junit.jupiter.api.*;
 
 import src.DB_Add.Add_Controller;
-import src.Query_Factory.Query;
+
 
 
 import java.sql.*;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.when;
+
 
 
 public class Add_Utente_Test {
 
-    Add_Controller addController = new Add_Controller();
+
 
     private static final String URL = "jdbc:mysql://localhost:3306/palestradb";
     private static final String USER = "admin";
@@ -76,9 +76,6 @@ public class Add_Utente_Test {
             assertEquals(Date.valueOf("2027-11-12"), rs.getDate("scadenza"), "La scadenza non corrisponde.");
 
             pstmt.close();
-
-
-
 
         } catch (SQLException e) {
             fail("Errore nella connessione al database di test: " + e.getMessage());

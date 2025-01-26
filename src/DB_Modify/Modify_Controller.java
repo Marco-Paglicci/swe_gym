@@ -84,7 +84,7 @@ public class Modify_Controller {
 
         if(type.equals("C"))
         {
-            query = "DELETE FROM affiliazione " +
+            query = "DELETE FROM affilliazione " +
                     "WHERE idUtente = " + ID + " AND idPersonaltrainer = " + PT.getID();
             Qy = QF.createQuery(query);
             result = EQ.executeModify(Qy);
