@@ -7,6 +7,7 @@ import src.Query_Executer.DAOStructure.UtenteDAO;
 import src.Query_Executer.Execute_Query;
 import src.Query_Factory.Query;
 import src.Query_Factory.QueryFactory;
+import src.Query_Factory.QueryFactory_Imp;
 
 import java.util.List;
 
@@ -14,13 +15,12 @@ public class Clienti_Strategy implements Strategy{
 
 
     String query;
-    QueryFactory QF;
+    QueryFactory_Imp QF = new QueryFactory_Imp();
     Query Qy;
-    Object result;
     List<Client> result_list;
-    Execute_Query EQ;
 
-    UtenteDAO UDAO;
+    Execute_Query EQ = new Execute_Query();
+    UtenteDAO UDAO = new UtenteDAO(EQ);
 
     @Override
     public List<Client> execute(String type, int ID) {

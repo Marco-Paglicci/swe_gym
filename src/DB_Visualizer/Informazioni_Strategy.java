@@ -6,6 +6,7 @@ import src.Query_Executer.DAOStructure.UtenteDAO;
 import src.Query_Executer.Execute_Query;
 import src.Query_Factory.Query;
 import src.Query_Factory.QueryFactory;
+import src.Query_Factory.QueryFactory_Imp;
 
 import java.sql.ResultSet;
 import java.util.List;
@@ -13,14 +14,16 @@ import java.util.List;
 public class Informazioni_Strategy implements Strategy {
 
     String query;
-    QueryFactory QF;
+    QueryFactory_Imp QF = new QueryFactory_Imp();
     Query Qy;
 
-    UtenteDAO UtenteDAO;
-    Personal_TrainerDAO PTDAO;
+    Execute_Query EQ = new Execute_Query();
 
-    EmployeeDAO PDAO;
-    ResultSet RS;
+    UtenteDAO UtenteDAO = new UtenteDAO(EQ);
+    Personal_TrainerDAO PTDAO = new Personal_TrainerDAO(EQ);
+
+    EmployeeDAO PDAO = new EmployeeDAO(EQ);
+
 
     Object result;
     List<Object> result_list;

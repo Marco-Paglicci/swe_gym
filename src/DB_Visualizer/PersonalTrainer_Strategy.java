@@ -6,6 +6,7 @@ import src.Query_Executer.DAOStructure.Personal_TrainerDAO;
 import src.Query_Executer.Execute_Query;
 import src.Query_Factory.Query;
 import src.Query_Factory.QueryFactory;
+import src.Query_Factory.QueryFactory_Imp;
 
 import java.sql.ResultSet;
 import java.util.List;
@@ -13,13 +14,14 @@ import java.util.List;
 public class PersonalTrainer_Strategy implements Strategy {
 
     String query;
-    QueryFactory QF;
+    QueryFactory_Imp QF = new QueryFactory_Imp();
     Query Qy;
-    ResultSet RS;
+
     Object result;
     List<Personal_Trainer> result_list;
-    Personal_TrainerDAO PTDAO;
-    Execute_Query EQ;
+    Execute_Query EQ = new Execute_Query();
+    Personal_TrainerDAO PTDAO = new Personal_TrainerDAO(EQ);
+
     @Override
     public List<Personal_Trainer> execute(String type,int ID) {
 

@@ -5,6 +5,7 @@ import src.Query_Executer.DAOStructure.CorsiDAO;
 import src.Query_Executer.Execute_Query;
 import src.Query_Factory.Query;
 import src.Query_Factory.QueryFactory;
+import src.Query_Factory.QueryFactory_Imp;
 
 import java.sql.ResultSet;
 import java.util.List;
@@ -12,13 +13,13 @@ import java.util.List;
 public class Corsi_Strategy implements Strategy {
 
     String query;
-    QueryFactory QF;
+    QueryFactory_Imp QF = new QueryFactory_Imp();
     Query Qy;
     Object result;
     List<Corso> result_list;
-    Execute_Query EQ;
 
-    CorsiDAO CDAO;
+    Execute_Query EQ = new Execute_Query();
+    CorsiDAO CDAO = new CorsiDAO(EQ);
 
     @Override
     public List<Corso> execute(String type,int ID) {

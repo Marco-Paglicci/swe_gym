@@ -5,6 +5,7 @@ import models.Corso;
 import src.Query_Executer.Execute_Query;
 import src.Query_Factory.Query;
 import src.Query_Factory.QueryFactory;
+import src.Query_Factory.QueryFactory_Imp;
 
 import java.sql.ResultSet;
 import java.util.List;
@@ -12,9 +13,9 @@ import java.util.List;
 public class Recensioni_Strategy implements Strategy {
 
     String query;
-    QueryFactory QF;
+    QueryFactory_Imp QF = new QueryFactory_Imp();
     Query Qy;
-    Execute_Query EQ;
+    Execute_Query EQ = new Execute_Query();
     ResultSet RS;
     List<String> result_list;
 
