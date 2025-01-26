@@ -28,8 +28,8 @@ public class Clienti_Strategy implements Strategy{
         switch(type)
         {
             case "P":
-                query = "SELECT utenti.Nome,utenti.Cognome " +
-                        "FROM utenti  LEFT JOIN affilliazione ON  utenti.idUtenti = affilliazione.idUtente" +
+                query = "SELECT utenti.idUtenti,utenti.Nome,utenti.Cognome,utenti.metodo_di_pagamento,utenti.scadenza,utenti.premium " +
+                        "FROM utenti  LEFT JOIN affilliazione ON  utenti.idUtenti = affilliazione.idUtente " +
                         "WHERE affilliazione.idPersonaltrainer = " + ID;
                 Qy = QF.createQuery(query);
                 result_list = UDAO.getAllUtenti(Qy);
@@ -43,7 +43,7 @@ public class Clienti_Strategy implements Strategy{
 
             case "I":
                 query = "SELECT *" +
-                        "FROM utenti ";
+                        " FROM utenti ";
                 Qy = QF.createQuery(query);
                 result_list = UDAO.getAllUtenti(Qy);
                 if(result_list != null)

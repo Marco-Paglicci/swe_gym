@@ -14,7 +14,7 @@ public class DefaultQueryExecutionStrategy implements QueryExecutionStrategy {
     @Override
     public ResultSet executeGetQuery(String query)
     {
-        System.out.println("Executing modifing query " + query);
+        System.out.println("Executing  query " + query);
         return DB.executeQuery(query);
     }
 

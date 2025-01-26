@@ -32,7 +32,18 @@ public class Execute_Query {
             PreparedStatement statement = connection.prepareStatement(query.getQuery());
 
             // Usa la strategia per eseguire la query e ottenere il ResultSet
-            return strategy.executeGetQuery(query.getQuery());
+            ResultSet rs;
+            rs = strategy.executeGetQuery(query.getQuery());
+            if(rs == null)
+            {
+                System.out.println("RESULT SET NULL");
+                return null;
+            }
+            if(rs.isClosed())
+            {
+                System.out.println("RESULT SET CLOSED");
+            }
+            return rs;
 
         } catch (SQLException e) {
             throw new RuntimeException("Errore durante l'esecuzione della query GET", e);

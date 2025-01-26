@@ -12,8 +12,9 @@ public abstract  class Database {
     // Metodo per eseguire query di tipo SELECT
     public ResultSet executeQuery(String query) {
         System.out.println("Eseguo executeQuery: " + query);
-        try (Connection conn = getConnection();
-             Statement stmt = conn.createStatement()) {
+        try {
+            Connection conn = getConnection();
+             Statement stmt = conn.createStatement();
             return stmt.executeQuery(query);
         } catch (Exception e) {
             e.printStackTrace();

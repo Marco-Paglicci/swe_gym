@@ -8,7 +8,7 @@ public class Client_Interface {
     private Personal_Trainer PT;
     private List<Client> client_list;
     private List<Client> ALLclient_list;
-    private DB_Visualizer DB;
+    private final DB_Visualizer DB = new DB_Visualizer();
     Book_Interface BI;
 
     public Client_Interface(Personal_Trainer PT){

@@ -46,20 +46,24 @@ public class PT_getClient_Test {
 
             //setup Interfaccia
 
-            Personal_Trainer PT = new Personal_Trainer(1,"Riccardo","Grazini",22,"Giovane ragazzo esperto in pilates",4.3);
+            Personal_Trainer PT = new Personal_Trainer(10,"Riccardo","Mancini",22,"Giovane ragazzo esperto in pilates",4.3);
             PT_Interface PI = new PT_Interface(PT);
             Client_Interface CI = new Client_Interface(PT);
-            PI.tabella_clienti();
 
-            List<Client> client_list = CI.getClient_list();
+            System.out.println(">Prelevo tabella clienti");
+
+
+            List<Client> client_list = CI.getClientiAssociati();
             List<Client> utenti = new ArrayList<>();
+
+
 
             System.out.println("Generating query");
 
             //metto su clientlist i clienti prelevati da client
             //interface per confrontarli coi risultati della query
 
-            String query = "SELECT utenti.Nome,utenti.Cognome " +
+            String query = "SELECT utenti.idUtenti,utenti.Nome,utenti.Cognome,utenti.metodo_di_pagamento,utenti.scadenza,utenti.premium " +
                     "FROM utenti  LEFT JOIN affilliazione ON  utenti.idUtenti = affilliazione.idUtente" +
                     " WHERE idPersonaltrainer = ? ";
 
@@ -82,7 +86,7 @@ public class PT_getClient_Test {
                         rs.getDate("scadenza")
                 );
                 Client utente = new Client(
-                        rs.getInt("idUtente"),
+                        rs.getInt("idUtenti"),
                         rs.getString("nome"),
                         rs.getString("cognome"),
                         sb
@@ -90,7 +94,16 @@ public class PT_getClient_Test {
                 utenti.add(utente);
             }
 
-            assertEquals(client_list,utenti);
+
+
+            for(Client cliente : client_list )
+            {
+                for (Client c : utenti)
+                {
+                    assertEquals(cliente,c);
+                }
+
+            }
 
             pstmt.close();
 
