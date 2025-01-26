@@ -54,7 +54,7 @@ public class PT_getClient_Test {
 
 
             List<Client> client_list = CI.getClientiAssociati();
-            List<Client> utenti = new ArrayList<>();
+            List<Client> utenti = new ArrayList<>(client_list.size());
 
 
 
@@ -76,8 +76,7 @@ public class PT_getClient_Test {
 
             ResultSet rs = pstmt.executeQuery();
 
-            //controllo che rs non sia vuoto
-            assertTrue(rs.next());
+
 
             // Trasforma il ResultSet in una lista di oggetti Utente
             while (rs.next()) {
@@ -95,15 +94,15 @@ public class PT_getClient_Test {
             }
 
 
+            assertEquals(client_list.size(), utenti.size() , "Differenze in size");
 
-            for(Client cliente : client_list )
-            {
-                for (Client c : utenti)
-                {
-                    assertEquals(cliente,c);
-                }
-
+            for (int i = 0; i < client_list.size(); i++) {
+                Client expected = client_list.get(i);
+                Client actual = utenti.get(i);
+                assertEquals(expected.getID(), actual.getID(), "Differenza trovata all'indice " + i);
             }
+
+
 
             pstmt.close();
 

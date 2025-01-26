@@ -62,21 +62,21 @@ public class Add_Controller {
         switch (type) {
 
             case "C":
-                query = "INSERTO INTO messaggio_u_pt (mittente,destinatario,messaggio)" +
+                query = "INSERT INTO messaggio_u_pt (mittente,destinatario,messaggio)" +
                         "VALUES ( " + M.getSender() + "," + M.getReceiver() + "," + M.getContent() + ")";
                 break;
 
 
             case "P":
 
-                query = "INSERTO INTO messaggio_pt_u (mittente,destinatario,messaggio)" +
+                query = "INSERT INTO messaggio_pt_u (mittente,destinatario,messaggio)" +
                         "VALUES ( " + M.getSender() + "," + M.getReceiver() + "," + M.getContent() + ")";
                 break;
 
 
             case "I":
 
-                query = "INSERTO INTO messaggio_p_u (mittente,destinatario,messaggio)" +
+                query = "INSERT INTO messaggio_p_u (mittente,destinatario,messaggio)" +
                         "VALUES ( " + M.getSender() + "," + M.getReceiver() + "," + M.getContent() + ")";
                 break;
         }
@@ -98,15 +98,15 @@ public class Add_Controller {
 
             case "C":
 
-                query = "INSERTO INTO partecipazione (idUtente,idCorso)" +
-                        "VALUES ( " + ID + "," + corso.getId() + ")";
+                query = "INSERT INTO partecipazione (idUtente,idCorso) " +
+                        "VALUES (" + ID + "," + corso.getId() + ")";
                 break;
 
 
             case "I":
 
                 query = "INSERT INTO corsi (idcorsi, nome, orario_inizio, orario_fine, partecipanti)" +
-                        "VALUES (" + corso.getId() + ",'" +
+                        " VALUES (" + corso.getId() + ",'" +
                         corso.getNome() + "'," +
                         corso.getDurata() + "," +
                         corso.getDurata()  + "," +
@@ -131,7 +131,7 @@ public class Add_Controller {
 
             case "P":
 
-                query = "INSERTO INTO affilliazione (idUtente,idPersonaltrainer)" +
+                query = "INSERT INTO affilliazione (idUtente,idPersonaltrainer)" +
                         "VALUES ( " + cliente.getID() + "," + ID + ")";
                 break;
 
@@ -161,14 +161,14 @@ public class Add_Controller {
 
             case "C":
 
-                query = "INSERTO INTO appuntamento (idUtente,idPersonaltrainer,orario)" +
+                query = "INSERT INTO appuntamento (idUtente,idPersonaltrainer,orario)" +
                         "VALUES ( " + ID + "," + id_ + ",'" + orario + "')";
                 break;
 
 
             case "P":
 
-                query = "INSERTO INTO appuntamento (idUtente,idPersonaltrainer,orario)" +
+                query = "INSERT INTO appuntamento (idUtente,idPersonaltrainer,orario)" +
                         "VALUES ( " + id_ + "," + ID + ",'" + orario + "')";
                 break;
         }

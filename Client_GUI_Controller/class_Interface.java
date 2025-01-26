@@ -6,12 +6,12 @@ import models.Client;
 import models.Corso;
 import src.DB_Visualizer.DB_Visualizer;
 public class class_Interface {
-    private DB_Visualizer DB;
-    private Add_Controller AC;
+    private DB_Visualizer DB = new DB_Visualizer();
+    private Add_Controller AC = new Add_Controller();
     private Client utente;
     private List<Corso> corsi;
     private List<Corso> corsiIscritto;
-    class_Interface(Client utente){
+    public class_Interface(Client utente){
         this.utente = utente;
     }
     public List<Corso> getCorsiIscritto(){
@@ -27,7 +27,7 @@ public class class_Interface {
     }
     public void iscrizione_corso(Corso corso){
         //Logica per andare ad iscrivere l'utente con ID al corso con ID
-        if(AC.add_corso(utente.getID(), corso,"C")){
+        if(AC.add_corso(utente.getID(),corso,"C")){
             System.out.println("Iscrizione avvenuta con successo");
         }else System.out.println("Iscrizione negata...");
     }
