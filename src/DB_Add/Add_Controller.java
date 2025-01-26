@@ -106,17 +106,17 @@ public class Add_Controller {
             case "I":
 
                 query = "INSERT INTO corsi (idcorsi, nome, orario_inizio, orario_fine, partecipanti)" +
-                        "VALUES (" + corso.getId() + "," +
-                        corso.getNome() + "," +
+                        "VALUES (" + corso.getId() + ",'" +
+                        corso.getNome() + "'," +
                         corso.getDurata() + "," +
-                        corso.getDurata() + 1 + "," +
+                        corso.getDurata()  + "," +
                         corso.getIscritti() + ")";
                 break;
         }
         Qy = QF.createQuery(query);
         result = EQ.executeModify(Qy);
         if (result) {
-            return result;
+            return true;
         } else
 
             System.out.println("errore add Corso");
@@ -162,14 +162,14 @@ public class Add_Controller {
             case "C":
 
                 query = "INSERTO INTO appuntamento (idUtente,idPersonaltrainer,orario)" +
-                        "VALUES ( " + ID + "," + id_ + "," + orario + ")";
+                        "VALUES ( " + ID + "," + id_ + ",'" + orario + "')";
                 break;
 
 
             case "P":
 
                 query = "INSERTO INTO appuntamento (idUtente,idPersonaltrainer,orario)" +
-                        "VALUES ( " + id_ + "," + ID + "," + orario + ")";
+                        "VALUES ( " + id_ + "," + ID + ",'" + orario + "')";
                 break;
         }
         Qy = QF.createQuery(query);

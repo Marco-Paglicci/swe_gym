@@ -7,16 +7,17 @@ import models.Personal_Trainer;
 import src.Query_Executer.Execute_Query;
 import src.Query_Factory.Query;
 import src.Query_Factory.QueryFactory;
+import src.Query_Factory.QueryFactory_Imp;
 
 public class Remove_Controller
 {
     boolean result = false;
 
     String query;
-    QueryFactory QF;
+    QueryFactory_Imp QF = new QueryFactory_Imp();
     Query Qy;
 
-    Execute_Query EQ;
+    Execute_Query EQ = new Execute_Query();
 
     /*----------------------------------QUERY FOR REMOVE------------------------------*/
 
