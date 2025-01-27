@@ -77,9 +77,9 @@ public class Execute_Query {
 
     public Query_Result  Execute(int request, Query query) {
         switch (request) {
-            case 1: // Modalità get
+            case 1:
                 return new Query_Result(executeGet(query));
-            case 2: // Modalità modify
+            case 2:
                 return new Query_Result(executeModify(query));
             default:
                 throw new IllegalArgumentException("Invalid request type");
