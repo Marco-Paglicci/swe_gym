@@ -26,8 +26,8 @@ public class Recensioni_Strategy implements Strategy {
         switch (type) {
             case "C":
                 query = "SELECT recensione.recensione " +
-                        "FROM recensione " +
-                        "WHERE recensione.idUtente = " + ID;
+                        " FROM recensione " +
+                        " WHERE recensione.idUtente = " + ID;
                 Qy = QF.createQuery(query);
                 RS = EQ.executeGet(Qy);
                 try {
@@ -46,8 +46,8 @@ public class Recensioni_Strategy implements Strategy {
                 }
             case "P":
                 query = "SELECT recensione.recensione " +
-                        "FROM recensione " +
-                        "WHERE recensione.idPersonaltrainer = " + ID;
+                        " FROM recensione " +
+                        " WHERE recensione.idPersonaltrainer = " + ID;
                 Qy = QF.createQuery(query);
                 RS = EQ.executeGet(Qy);
                 try {
@@ -66,7 +66,7 @@ public class Recensioni_Strategy implements Strategy {
                 }
             case "I":
                 query = "SELECT recensione.recensione " +
-                        "FROM recensione ";
+                        " FROM recensione ";
                 Qy = QF.createQuery(query);
                 RS = EQ.executeGet(Qy);
                 try {

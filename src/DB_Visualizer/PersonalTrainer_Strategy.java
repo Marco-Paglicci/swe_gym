@@ -31,8 +31,8 @@ public class PersonalTrainer_Strategy implements Strategy {
 
             case "C":
                 query = "SELECT  personal_trainer.nome , personal_trainer.cognome , personal_trainer.eta, personal_trainer.descrizione , personal_trainer.valutazione" +
-                        "FROM personal_trainer JOIN affilliazione ON personal_trainer.idPT = affilliazione.idPersonaltrainer" +
-                        "GROUP BY personal_trainer.idPT" +
+                        " FROM personal_trainer JOIN affilliazione ON personal_trainer.idPT = affilliazione.idPersonaltrainer" +
+                        " GROUP BY personal_trainer.idPT" +
                         " WHERE affilliazione.idUtente= " + ID;
                 Qy = QF.createQuery(query);
                 result_list = PTDAO.getAllPersonalTrainer(Qy);

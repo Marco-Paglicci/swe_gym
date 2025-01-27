@@ -26,7 +26,7 @@ public class Remove_Controller
 
         if(type.equals("I")) {
             query = "DELETE FROM utenti " +
-                    "WHERE idUtenti = " + C.getID();
+                    " WHERE idUtenti = " + C.getID();
 
 
             Qy = QF.createQuery(query);
@@ -50,7 +50,7 @@ public class Remove_Controller
             System.out.println("removing PT " + PT.getNome() + "  " + PT.getCognome());
 
             query = "DELETE FROM persnal_trainer " +
-                    "WHERE idPersonaltrainer = " + PT.getID() ;
+                    " WHERE idPersonaltrainer = " + PT.getID() ;
             Qy = QF.createQuery(query);
             result = EQ.executeModify(Qy);
             if (result) {
@@ -72,7 +72,7 @@ public class Remove_Controller
             System.out.println("removing PT " + C.getNome() + "  ");
 
             query = "DELETE FROM corsi " +
-                    "WHERE idCorsi = " + C.getId() ;
+                    " WHERE idCorsi = " + C.getId() ;
             Qy = QF.createQuery(query);
             result = EQ.executeModify(Qy);
             if (result) {
@@ -85,20 +85,20 @@ public class Remove_Controller
             return false;
         }
     }
-    //todo ma orario non lo usi nemmeno nella query
-    public boolean remove_appuntamento(int ID,int id_,/*String orario,*/String type)
+
+    public boolean remove_appuntamento(int ID,int id_,String type)
     {
         switch (type) {
             case "C":
 
                 query = "DELETE FROM appuntamento " +
-                        "WHERE idUtente = " + ID + "AND idPersonaltrainer =" + id_;
+                        " WHERE idUtente = " + ID + "AND idPersonaltrainer =" + id_;
                 break;
 
             case "P":
 
                 query = "DELETE FROM appuntamento " +
-                        "WHERE idUtente = " + id_ + "AND idPersonaltrainer =" + ID;
+                        " WHERE idUtente = " + id_ + "AND idPersonaltrainer =" + ID;
                 break;
         }
         Qy = QF.createQuery(query);

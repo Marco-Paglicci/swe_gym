@@ -153,6 +153,35 @@ public class Add_Controller {
         return false;
     }
 
+    public boolean add_PersonlTrainer(int ID,Personal_Trainer PT,String type)
+    {
+        System.out.println("add Personal Trainer");
+        if(type.equals("I"))
+        {
+            query = "INSERT INTO personal_trainer(idPT,nome,cognome,eta,descrizione,valutazione)" +
+                    " VALUES ( " + PT.getID() + "" +
+                    ",' " + PT.getNome() + "'" +
+                    ",'"+ PT.getCognome() + "'" +
+                    ","+ PT.getEta() + " " +
+                    ",'" + PT.getDescrizione()+"'" +
+                    "," + PT.getValutazione() + " )";
+
+
+            Qy = QF.createQuery(query);
+            result = EQ.executeModify(Qy);
+            if (result) {
+                return result;
+            } else
+                System.out.println("errore update Query");
+            return false;
+
+        }
+        System.out.println("Wrong type access in addPersonal Trainer");
+        return false;
+    }
+
+
+
     public boolean add_appuntamento(int ID, int id_, String orario, String type) {
         System.out.println(" add appuntamento");
 

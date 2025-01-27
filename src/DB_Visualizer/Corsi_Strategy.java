@@ -30,9 +30,9 @@ public class Corsi_Strategy implements Strategy {
         {
             case "C":
                 query = "SELECT corsi.nome , corsi.orario_inizio , corsi.partecipanti " +
-                        "FROM partecipazione JOIN corsi ON partecipazione.idCorso = corsi.idcorsi " +
-                        "GROUP BY corsi.idcorsi " +
-                        "WHERE partecipazione.idUtente = " + ID ;
+                        " FROM partecipazione JOIN corsi ON partecipazione.idCorso = corsi.idcorsi " +
+                        " GROUP BY corsi.idcorsi " +
+                        " WHERE partecipazione.idUtente = " + ID ;
 
                 Qy = QF.createQuery(query);
                 result_list = CDAO.getAllCorsi(Qy);

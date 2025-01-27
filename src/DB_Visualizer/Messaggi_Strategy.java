@@ -29,8 +29,8 @@ public class Messaggi_Strategy implements Strategy {
         {
             case "C":
                 query = "SELECT * " +
-                        "FROM messaggio_u_pt" +
-                        "WHERE messaggio_u_pt.destinatario = " + ID;
+                        " FROM messaggio_u_pt" +
+                        " WHERE messaggio_u_pt.destinatario = " + ID;
                 Qy = QF.createQuery(query);
                 result_list = MDAO.getAllMessagebyId(Qy);
                 if(result_list != null)
@@ -42,8 +42,8 @@ public class Messaggi_Strategy implements Strategy {
 
             case "P":
                 query = "SELECT * " +
-                        "FROM messaggio_pt_u" +
-                        "WHERE messaggio_pt_u.destinatario = " + ID;
+                        " FROM messaggio_pt_u" +
+                        " WHERE messaggio_pt_u.destinatario = " + ID;
                 Qy = QF.createQuery(query);
                 result_list = MDAO.getAllMessagebyId(Qy);
                 if(result_list != null)
@@ -56,8 +56,8 @@ public class Messaggi_Strategy implements Strategy {
             case "I":
 
                 query = "SELECT * " +
-                        "FROM messaggio_p_u" +
-                        "WHERE messaggio_p_u.mittente = " + ID;
+                        " FROM messaggio_p_u" +
+                        " WHERE messaggio_p_u.mittente = " + ID;
                 Qy = QF.createQuery(query);
                 result_list = MDAO.getAllMessagebyId(Qy);
                 if(result_list != null)

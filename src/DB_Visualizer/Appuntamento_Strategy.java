@@ -27,13 +27,13 @@ public class Appuntamento_Strategy implements Strategy {
         switch (type) {
             case "C":
                 query = "SELECT appuntameto.orario " +
-                        "FROM appuntamento " +
-                        "WHERE appuntamento.idUtente = " + ID;
+                        " FROM appuntamento " +
+                        " WHERE appuntamento.idUtente = " + ID;
                 Qy = QF.createQuery(query);
                 RS = EQ.executeGet(Qy);
                 try {
                     while (RS.next()) {
-                        result_list.add(RS.getString("appuntamento.orario"));
+                        result_list.add(RS.getString("orario"));
                     }
                 } catch (Exception e) {
                     System.err.println("Errore durante il recupero degli appuntamenti:");
@@ -53,7 +53,7 @@ public class Appuntamento_Strategy implements Strategy {
                 RS = EQ.executeGet(Qy);
                 try {
                     while (RS.next()) {
-                        result_list.add(RS.getString("appuntamento"));
+                        result_list.add(RS.getString("orario"));
                     }
                 } catch (Exception e) {
                     System.err.println("Errore durante il recupero degli appuntamenti:");
