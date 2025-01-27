@@ -1,16 +1,10 @@
-
-import Employee_GUI_Controller.Employee_Interface;
 import Employee_GUI_Controller.Interface_Client;
 import models.Client;
 import models.Employee;
 import models.Subscrition;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.jupiter.api.*;
-
-import src.DB_Add.Add_Controller;
-
-
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
 import java.sql.*;
 
