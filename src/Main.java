@@ -9,7 +9,7 @@ import java.sql.Statement;
 
 public class Main {
 
-    String version = "1.2";
+    String version = "1.3";
 
     //todo implementare ACCESS
     public static void main(String[] args) {
