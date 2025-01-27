@@ -9,9 +9,9 @@ import java.sql.Statement;
 
 public class Main {
 
-    String version = "1.3";
+    String version = "1.4";
 
-    //todo implementare ACCESS
+
     public static void main(String[] args) {
         System.out.println("Inizio test.test della connessione al database...");
 
