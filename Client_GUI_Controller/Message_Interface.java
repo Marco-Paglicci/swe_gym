@@ -3,7 +3,7 @@ import models.Message;
 import src.DB_Add.Add_Controller;
 public class Message_Interface {
     private Message messaggio;
-    private Add_Controller AC;
+    private Add_Controller AC = new Add_Controller();
 
     public void sendMessage(Message M){
         //Implementa una logica per inviare il messaggio M tramite DB

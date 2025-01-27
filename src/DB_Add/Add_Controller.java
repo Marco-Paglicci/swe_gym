@@ -63,21 +63,21 @@ public class Add_Controller {
 
             case "C":
                 query = "INSERT INTO messaggio_u_pt (mittente,destinatario,messaggio)" +
-                        "VALUES ( " + M.getSender() + "," + M.getReceiver() + "," + M.getContent() + ")";
+                        "VALUES ( " + M.getSender() + "," + M.getReceiver() + ",'" + M.getContent() + "')";
                 break;
 
 
             case "P":
 
                 query = "INSERT INTO messaggio_pt_u (mittente,destinatario,messaggio)" +
-                        "VALUES ( " + M.getSender() + "," + M.getReceiver() + "," + M.getContent() + ")";
+                        "VALUES ( " + M.getSender() + "," + M.getReceiver() + ",'" + M.getContent() + "')";
                 break;
 
 
             case "I":
 
                 query = "INSERT INTO messaggio_p_u (mittente,destinatario,messaggio)" +
-                        "VALUES ( " + M.getSender() + "," + M.getReceiver() + "," + M.getContent() + ")";
+                        "VALUES ( " + M.getSender() + "," + M.getReceiver() + ",'" + M.getContent() + "')";
                 break;
         }
         Qy = QF.createQuery(query);

@@ -6,10 +6,10 @@ import models.Message;
 import models.Client;
 import src.DB_Visualizer.DB_Visualizer;
 public class Notification_Interface {
-    private DB_Visualizer DB;
+    private DB_Visualizer DB = new DB_Visualizer();
     private Client utente;
     private List<Message> messaggi;
-    Notification_Interface(Client utente){
+    public Notification_Interface(Client utente){
         this.utente = utente;
     }
     public List<Message> getMessaggi(){
