@@ -10,6 +10,7 @@ import src.Query_Executer.Database;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,104 +18,84 @@ public class Personal_TrainerDAO {
 
     private final Execute_Query executeQuery;
 
-    // Costruttore che riceve l'oggetto Execute_Query
+
     public Personal_TrainerDAO(Execute_Query executeQuery) {
         this.executeQuery = executeQuery;
     }
 
-    /**
-     * Ottieni una lista di tutti gli utenti dal database.
-     *
-     * @param query Oggetto Query con la stringa SQL.
-     * @return Lista di oggetti Utente.
-     */
     public List<Personal_Trainer> getAllPersonalTrainer(Query query) {
         List<Personal_Trainer> Personal_Trainer_list = new ArrayList<>();
-        ResultSet rs = null;
+
 
 
         try {
-            // Esegui la query usando Execute_Query
-            rs = executeQuery.Execute(1, query).getResultSet();
-            // Esegui la query
-
-
-            // Trasforma il ResultSet in una lista di oggetti Utente
-            while (rs.next()) {
-
-                Personal_Trainer PT = new Personal_Trainer(
-                        rs.getInt("idPersonal trainer"),
-                        rs.getString("nome"),
-                        rs.getString("cognome"),
-                        rs.getInt("eta"),
-                        rs.getString("descrizione"),
-                        rs.getInt("valutazione")
-                );
-                Personal_Trainer_list.add(PT);
-            }
-
-        } catch (Exception e) {
-            System.err.println("Errore durante il recupero degli Personal Trainer:");
-            e.printStackTrace();
-        } finally {
-            // Chiudi il ResultSet se aperto
-            try {
-                if (rs != null) {
-                    rs.close();
+            try(ResultSet rs = executeQuery.executeGet(query)) {
+                if (rs == null || rs.isClosed()) {
+                    System.err.println("ERRORE: il ResultSet è nullo o chiuso!");
+                    return Personal_Trainer_list; // Ritorna una lista vuota
                 }
-            } catch (Exception e) {
-                System.err.println("Errore durante la chiusura del ResultSet:");
-                e.printStackTrace();
+                // Trasforma il ResultSet in una lista di oggetti Utente
+                while (rs.next()) {
+
+                    Personal_Trainer PT = new Personal_Trainer(
+                            rs.getInt("idPersonal trainer"),
+                            rs.getString("nome"),
+                            rs.getString("cognome"),
+                            rs.getInt("eta"),
+                            rs.getString("descrizione"),
+                            rs.getInt("valutazione")
+                    );
+                    Personal_Trainer_list.add(PT);
+                    System.out.println("PT aggiunto alla lista");
+                }
+                System.out.println("Trasformazione completata con successo");
             }
+
+        }catch (SQLException e) {
+            System.err.println("Errore durante l'esecuzione della query:");
+            e.printStackTrace();
+        } catch (Exception e) {
+            System.err.println("Errore generico durante il recupero dei PT:");
+            e.printStackTrace();
         }
 
         return Personal_Trainer_list;
     }
 
-    /**
-     * Ottieni un singolo utente in base all'ID.
-     *
-     * @param query Oggetto Query con la stringa SQL.
-     * @return Oggetto Utente, o null se non trovato.
-     */
+
     public Personal_Trainer getPersonal_TrainerById(Query query) {
-        ResultSet rs = null;
         Personal_Trainer PT = null;
 
         try {
-            // Esegui la query usando Execute_Query
-            rs = executeQuery.Execute(1, query).getResultSet();
-            // Esegui la query
-
-
-            // Trasforma il ResultSet in una lista di oggetti Utente
-            while (rs.next()) {
-
-                 PT = new Personal_Trainer(
-                        rs.getInt("idPersonal trainer"),
-                        rs.getString("nome"),
-                        rs.getString("cognome"),
-                        rs.getInt("eta"),
-                        rs.getString("descrizione"),
-                        rs.getInt("valutazione")
-                );
-            }
-            return PT;
-        } catch (Exception e) {
-            System.err.println("Errore durante il recupero degli utenti:");
-            e.printStackTrace();
-        } finally {
-            // Chiudi il ResultSet se aperto
-            try {
-                if (rs != null) {
-                    rs.close();
+            try (ResultSet rs = executeQuery.executeGet(query)) {
+                if (rs == null || rs.isClosed()) {
+                    System.err.println("ERRORE: il ResultSet è nullo o chiuso!");
+                    return PT; // Ritorna una lista vuota
                 }
-            } catch (Exception e) {
-                System.err.println("Errore durante la chiusura del ResultSet:");
-                e.printStackTrace();
-            }
-        }
+                System.out.println("Query eseguita correttamente");
 
+                // Trasforma il ResultSet in una lista di oggetti Utente
+                if(rs.next()) {
+
+                    PT = new Personal_Trainer(
+                            rs.getInt("idPersonal trainer"),
+                            rs.getString("nome"),
+                            rs.getString("cognome"),
+                            rs.getInt("eta"),
+                            rs.getString("descrizione"),
+                            rs.getInt("valutazione")
+                    );
+                }
+                System.out.println("Trasformazione eseguita correttamente");
+                return PT;
+            }
+        } catch (SQLException e) {
+            System.err.println("Errore durante l'esecuzione della query:");
+            e.printStackTrace();
+        } catch (Exception e) {
+            System.err.println("Errore generico durante il recupero degli PT by id:");
+            e.printStackTrace();
+        }
         return null;
     }
 }

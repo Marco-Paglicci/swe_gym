@@ -17,17 +17,12 @@ public class UtenteDAO {
 
     private final Execute_Query executeQuery;
 
-    // Costruttore che riceve l'oggetto Execute_Query
+
     public UtenteDAO(Execute_Query executeQuery) {
         this.executeQuery = executeQuery;
     }
 
-    /**
-     * Ottieni una lista di tutti gli utenti dal database.
-     *
-     * @param query Oggetto Query con la stringa SQL.
-     * @return Lista di oggetti Utente.
-     */
+
     public List<Client> getAllUtenti(Query query) {
         List<Client> utenti = new ArrayList<>();
 
@@ -42,16 +37,14 @@ public class UtenteDAO {
                 // Trasforma il ResultSet in una lista di oggetti Utente
 
                 while (rs.next()) {
-                    System.out.println("Processando utente..."); // Messaggio di debug
 
-                    // Crea l'oggetto Subscription
+
                     Subscrition sb = new Subscrition(
                             rs.getBoolean("premium"),
                             rs.getDate("scadenza")
                     );
-                    System.out.println("Subscription creata con successo");
 
-                    // Crea l'oggetto Client e aggiungilo alla lista
+
                     Client utente = new Client(
                             rs.getInt("idUtenti"),
                             rs.getString("nome"),
@@ -76,41 +69,44 @@ public class UtenteDAO {
         return utenti;
     }
 
-    /**
-     * Ottieni un singolo utente in base all'ID.
-     *
-     * @param query Oggetto Query con la stringa SQL.
-     * @return Oggetto Utente, o null se non trovato.
-     */
+
     public Client getUtenteById(Query query) {
-        ResultSet rs ;
         Client utente = null;
 
         try {
             // Esegui la query usando Execute_Query
-            rs = executeQuery.executeGet(query);
-            // Esegui la query
-            System.out.println("Query eseguita correttamente");
+            try(ResultSet rs = executeQuery.executeGet(query))
+            {
+                if (rs == null || rs.isClosed()) {
+                    System.err.println("ERRORE: il ResultSet è nullo o chiuso!");
+                    return utente; // Ritorna una lista vuota
+                }
+                // Esegui la query
+                System.out.println("Query eseguita correttamente");
 
-            // Trasforma il ResultSet in una lista di oggetti Utente
-            while (rs.next()) {
-                Subscrition sb = new Subscrition(
-                        rs.getBoolean("premium"),
-                        rs.getDate("scadenza")
-                );
-                    utente  = new Client(
-                        rs.getInt("idUtente"),
-                        rs.getString("nome"),
-                        rs.getString("cognome"),
-                        sb
-                );
+                // Trasforma il ResultSet in una lista di oggetti Utente
+                if(rs.next()) {
+                    Subscrition sb = new Subscrition(
+                            rs.getBoolean("premium"),
+                            rs.getDate("scadenza")
+                    );
+                    utente = new Client(
+                            rs.getInt("idUtente"),
+                            rs.getString("nome"),
+                            rs.getString("cognome"),
+                            sb
+                    );
+                }
+
+                System.out.println("Trasformazione eseguita correttamente");
+
+                return utente;
             }
-
-            System.out.println("Trasformazione eseguita correttamente");
-
-            return utente;
+        } catch (SQLException e) {
+            System.err.println("Errore durante l'esecuzione della query:");
+            e.printStackTrace();
         } catch (Exception e) {
-            System.err.println("Errore durante il recupero degli utenti:");
+            System.err.println("Errore generico durante il recupero degli utenti:");
             e.printStackTrace();
         }
         return null;
