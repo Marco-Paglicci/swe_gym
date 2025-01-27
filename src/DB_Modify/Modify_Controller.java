@@ -28,14 +28,14 @@ public class Modify_Controller {
             case "C":
 
                 query = "UPDATE utenti" +
-                        "SET Nome = '" + nome + "', Cognome = '" + cognome +
+                        " SET Nome = '" + nome + "', Cognome = '" + cognome +
                         "' WHERE idUtenti = " + ID;
                 break;
 
             case "P":
 
                 query = "UPDATE personal_trainer" +
-                        "SET nome = '" + nome + "', cognome = '" + cognome +
+                        " SET nome = '" + nome + "', cognome = '" + cognome +
                         "' WHERE idPT = " + ID;
                 break;
 
@@ -43,7 +43,7 @@ public class Modify_Controller {
             case "I":
 
                 query = "UPDATE personale" +
-                        "SET nome = '" + nome + "', cognome = '" + cognome +
+                        " SET nome = '" + nome + "', cognome = '" + cognome +
                         "' WHERE idpersonale = " + ID;
                 break;
         }
